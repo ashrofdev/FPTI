@@ -1,0 +1,101 @@
+.nav {
+    display: flex;
+    align-items: center;
+}
+.nav .list {
+    display: flex;
+    opacity: 0;
+    transform: translateX(15%);
+    z-index: -1;
+    transition: all .5s;
+}
+.nav .show {
+    opacity: 1;
+    transform: translate(0);
+    z-index: 1;
+    color: red;
+}
+
+.nav .list .item {
+    font-size: 3rem;
+    list-style: none;
+}
+.nav .list button {
+    font-size: 2rem;
+}
+
+.item button {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    padding: 1rem;
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+.item button::after {
+    content: "";
+    width: 100%;
+    height: .3rem;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: all .5s;
+    transform-origin: center;
+}
+.item button:hover::after {
+    transform: scale(1);
+}
+.nav-btn {
+    height: .6rem;
+    background-image: linear-gradient(to right, rgb(23, 161, 23) 10%, rgb(228, 158, 29)60%);
+    padding: 0;
+    width: 3.5rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 2px 2px rgb(53, 52, 52);
+    outline: none;
+    z-index: 10000;
+    transition: all .5s;
+    border: none;
+}
+.nav-btn::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -1rem;
+    box-shadow: 2px 2px rgb(53, 52, 52);
+    left: 0;
+    background-image: linear-gradient(to right, rgb(20, 158, 20) 10%, rgb(189, 133, 28)40%);
+    transition: all .5s;
+}
+.nav-btn::after {
+    content: "";
+    width: 100%;
+    box-shadow: 2px 2px rgb(53, 52, 52);
+    height: 100%;
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    background-image: linear-gradient(to right, rgb(22, 139, 22) 10%, rgb(192, 133, 24)70%);
+}
+.n-btn {
+    height: .2rem;
+    transform: rotate(405deg);
+    border: none;
+}
+.n-btn::before {
+    width: 100%;
+    height: 100%;
+    transform: rotate(90deg) translateY(0) translateX(.7rem);
+}
+.n-btn::after {
+    display: none;
+}
+
+
+/* STYLING THE SCROLLER */
+

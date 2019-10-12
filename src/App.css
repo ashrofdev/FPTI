@@ -1,0 +1,22 @@
+:root {
+  --color-primary: rgb(241, 239, 239);
+  --color-secondary: rgb(12, 12, 12);
+  --text-color: rgb(87, 85, 85);
+  --white: rgb(255, 255, 255);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.25%;
+  color: var(--text-color);
+  font-family: sans-serif;
+}
+
+.App {
+  width: 80rem;
+  margin: auto;
+}

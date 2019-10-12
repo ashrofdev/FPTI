@@ -1,0 +1,64 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    width: 2rem;
+    height: 2rem;
+}
+h1 {
+    font-size: 7rem;
+    font-family: monospace;
+    background-image: linear-gradient(to right, rgb(48, 245, 48) 10%, rgb(255, 166, 0)50%);
+    background-clip: text;
+    text-align: center;
+    color: transparent;
+}
+
+.search {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 5rem;
+}
+.search input {
+    width: 40rem;
+    height: 4rem;
+    border-radius: 10rem;
+    padding: .7rem 3rem;
+    font-size: 2.5rem;
+    outline: none;
+    margin: auto;
+    border: 1px solid greenyellow;
+    transition: all .3s;
+    transform: translateX(20%);
+}
+.search input::placeholder {
+    font-weight: 100;
+    font-size: 2rem;
+    color: rgb(235, 232, 232);
+    font-style: italic;
+}
+.search input:focus {
+    width: 45rem;
+}
+.search button {
+    font-size: 2rem;
+    box-shadow: 1px 1px 5px black;
+    border: none;
+    position: relative;
+    z-index: 100;
+    color: white;
+    background-color: rgb(13, 182, 13);
+    border-radius: 10rem;
+    padding: 1.4rem 1.5rem;
+    transform: translateY(-5%);
+    transition: all .5s;
+}
+.search button:hover {
+    box-shadow: 3px 2px 1rem black;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+}
