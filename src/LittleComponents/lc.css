@@ -98,4 +98,8 @@
 
 
 /* STYLING THE SCROLLER */
-
+@media only screen and (max-width: 1000px) {
+    .nav {
+        margin: 2rem;
+    }
+  }

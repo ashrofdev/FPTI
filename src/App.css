@@ -21,10 +21,11 @@ html {
   margin: auto;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .App {
     width: 100%;
-    padding: 1rem;
   }
- 
+  .logo {
+    margin-left: 2rem;
+  }
 }
