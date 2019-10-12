@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/FPTI/static/css/main.352a5e3f.chunk.css",
-    "main.js": "/FPTI/static/js/main.ee6f5b8c.chunk.js",
-    "main.js.map": "/FPTI/static/js/main.ee6f5b8c.chunk.js.map",
+    "main.css": "/FPTI/static/css/main.938fda9c.chunk.css",
+    "main.js": "/FPTI/static/js/main.51a164a9.chunk.js",
+    "main.js.map": "/FPTI/static/js/main.51a164a9.chunk.js.map",
     "runtime~main.js": "/FPTI/static/js/runtime~main.a6cdf523.js",
     "runtime~main.js.map": "/FPTI/static/js/runtime~main.a6cdf523.js.map",
-    "static/js/2.3455e6aa.chunk.js": "/FPTI/static/js/2.3455e6aa.chunk.js",
-    "static/js/2.3455e6aa.chunk.js.map": "/FPTI/static/js/2.3455e6aa.chunk.js.map",
+    "static/css/2.366af2a3.chunk.css": "/FPTI/static/css/2.366af2a3.chunk.css",
+    "static/js/2.5110b045.chunk.js": "/FPTI/static/js/2.5110b045.chunk.js",
+    "static/js/2.5110b045.chunk.js.map": "/FPTI/static/js/2.5110b045.chunk.js.map",
     "index.html": "/FPTI/index.html",
-    "precache-manifest.45ab1d7132030cf918adafe0d151591c.js": "/FPTI/precache-manifest.45ab1d7132030cf918adafe0d151591c.js",
+    "precache-manifest.6ca62dd4f4d1ab4f5235322df9a6c5b3.js": "/FPTI/precache-manifest.6ca62dd4f4d1ab4f5235322df9a6c5b3.js",
     "service-worker.js": "/FPTI/service-worker.js",
-    "static/css/main.352a5e3f.chunk.css.map": "/FPTI/static/css/main.352a5e3f.chunk.css.map"
+    "static/css/2.366af2a3.chunk.css.map": "/FPTI/static/css/2.366af2a3.chunk.css.map",
+    "static/css/main.938fda9c.chunk.css.map": "/FPTI/static/css/main.938fda9c.chunk.css.map",
+    "static/media/font-awesome.min.css": "/FPTI/static/media/fontawesome-webfont.fee66e71.woff"
   }
 }

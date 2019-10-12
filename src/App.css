@@ -20,3 +20,9 @@ html {
   width: 100rem;
   margin: auto;
 }
+
+@media only screen and (max-width: 900px) {
+  .App {
+    width: 100%;
+  }
+}
