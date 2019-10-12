@@ -50,7 +50,7 @@
 }
 .nav-btn {
     height: .6rem;
-    background-image: linear-gradient(to right, rgb(23, 161, 23) 10%, rgb(228, 158, 29)60%);
+    background-color: rgb(6, 85, 6);
     padding: 0;
     width: 3.5rem;
     cursor: pointer;
@@ -69,7 +69,7 @@
     top: -1rem;
     box-shadow: 2px 2px rgb(53, 52, 52);
     left: 0;
-    background-image: linear-gradient(to right, rgb(20, 158, 20) 10%, rgb(189, 133, 28)40%);
+    background-color: rgb(6, 85, 6);
     transition: all .5s;
 }
 .nav-btn::after {
@@ -80,7 +80,7 @@
     position: absolute;
     bottom: -1rem;
     left: 0;
-    background-image: linear-gradient(to right, rgb(22, 139, 22) 10%, rgb(192, 133, 24)70%);
+    background-color: rgb(6, 85, 6);
 }
 .n-btn {
     height: .2rem;

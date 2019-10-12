@@ -3,10 +3,11 @@
     justify-content: space-between;
 }
 .logo {
-    width: 2rem;
-    height: 2rem;
+    width: 10em;
+    height: auto;
 }
 h1 {
+    margin-top: 10rem;
     font-size: 7rem;
     font-family: monospace;
     background-image: linear-gradient(to right, rgb(48, 245, 48) 10%, rgb(255, 166, 0)50%);

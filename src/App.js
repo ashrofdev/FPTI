@@ -31,8 +31,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="top">
-            <div>
-              <img classList="logo" alt="" src={require('./img/images.jpg')} />
+            <div className="img">
+              <img className="logo" alt="" src={require('./img/images.jpg')} />
             </div>
             <NavBar onPageChange={this.onPageChange}/>
         </div>
