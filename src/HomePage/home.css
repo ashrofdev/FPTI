@@ -100,6 +100,14 @@ button {
         padding: .5rem 1rem;
         font-size: 1.2rem;
     }
+    .search input::placeholder {
+        font-size: 1rem;
+    }
+    .search button {
+        font-size: 1.5rem;
+        padding: 1rem 1rem;
+        transform: translateX(-70%);
+    }
     i span {
         display: none;
     }
