@@ -10,7 +10,7 @@ const HomePage = () => {
             <div className="search">
                 <input placeholder="Search user..." />
                 <button className="search-btn">
-                    <i className="fa fa-search"> SEARCH</i>
+                    <i className="fa fa-search"> <span>SEARCH</span></i>
                 </button>
             </div>
         </div>
