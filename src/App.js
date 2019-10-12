@@ -13,11 +13,29 @@ class App extends Component {
     super()
     this.state={
       page: 'home',
-      story: false
+      user: {}
     }
   }
   componentDidMount() {
     
+  }
+
+  onSearch = () => {
+    const username = document.querySelector('.username').value
+    fetch('http://localhost:3001/users').then((res)=>{
+      return res.json()
+    }).then(data=>{
+      data.forEach(user => {
+        if (user.username.toLowerCase().includes(username.toLowerCase())) {
+            this.setState({user: user})
+            console.log(this.state.user)
+        }else {
+          this.setState({user: {
+            fullName: 'No such user'
+          }})
+        }
+      });
+    })
   }
 
   onPageChange = (route) => {
@@ -38,7 +56,7 @@ class App extends Component {
         </div>
       { this.state.page === 'home'
           ? <div>
-              <HomePage person={this.state.person} more={this.more} contact={this.contact}/>
+              <HomePage onSearch={this.onSearch} user={this.state.user}/>
             </div>
           : 
           (   this.state.page === 'admin'

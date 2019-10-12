@@ -1,0 +1,19 @@
+.head {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.full-name {
+    font-size: 3rem;
+}
+.user-bio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    padding: 1rem;
+}
+
+.user-bio p {
+    font-size: 1.5rem;
+    padding: 1rem;
+}

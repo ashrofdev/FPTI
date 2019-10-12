@@ -106,7 +106,7 @@ button {
     .search button {
         font-size: 1.5rem;
         padding: 1rem 1rem;
-        transform: translateX(-70%);
+        transform: translateX(-50%);
     }
     i span {
         display: none;
