@@ -21,19 +21,19 @@ class App extends Component {
   }
 
   onSearch = () => {
+    document.querySelector('.search').classList.add('to-top')
+    document.querySelector('.top').classList.add('n-top')
+    document.querySelector('h1').style="display: none"
     const username = document.querySelector('.username').value
-    fetch('http://localhost:3001/users').then((res)=>{
+    fetch('https://cors-anywhere.herokuapp.com/https://fpt-server.herokuapp.com/users').then((res)=>{
       return res.json()
     }).then(data=>{
       data.forEach(user => {
         if (user.username.toLowerCase().includes(username.toLowerCase())) {
             this.setState({user: user})
             console.log(this.state.user)
-        }else {
-          this.setState({user: {
-            fullName: 'No such user'
-          }})
         }
+        document.querySelector('.user').classList.add('u-totop')
       });
     })
   }
@@ -49,10 +49,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="top">
-            <div className="img">
-              <img className="logo" alt="" src={require('./img/images.jpg')} />
+            <div className="items">
+              <div className="img">
+                <img className="logo" alt="" src={require('./img/images.jpg')} />
+              </div>
+              <NavBar onPageChange={this.onPageChange}/>
             </div>
-            <NavBar onPageChange={this.onPageChange}/>
         </div>
       { this.state.page === 'home'
           ? <div>
