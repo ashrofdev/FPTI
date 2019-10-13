@@ -13,7 +13,8 @@ class App extends Component {
     super()
     this.state={
       page: 'home',
-      user: {}
+      user: {},
+      password: 'freedom'
     }
   }
   componentDidMount() {
@@ -42,7 +43,19 @@ class App extends Component {
   }
 
   onPageChange = (route) => {
-    this.setState({page: route})
+    if (route === 'admin') {
+      document.querySelector('.pass').classList.add('slide-in')
+      window.addEventListener('keypress',(e)=>{
+        if (e.key==='Enter') {
+          if(document.querySelector('.password').value === this.state.password) {
+            this.setState({page: route})
+            document.querySelector('.pass').classList.remove('slide-in')
+          }
+        }
+      })
+    } else {
+      this.setState({page: route})
+    }
     console.log(route)
     document.querySelector('.nav .list').classList.remove('show')
     document.querySelector('.nav-btn').classList.remove('n-btn')
@@ -71,6 +84,10 @@ class App extends Component {
             : {}
             ) 
         }
+            <div className="pass">
+                <p>Please enter the admin password</p>
+                <input type="password" className="password" placeholder="Enter password"/>
+            </div>
       </div>
     );
   }
