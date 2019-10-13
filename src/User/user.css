@@ -1,6 +1,9 @@
 .user {
     visibility: hidden;
     transform: translateY(200%);
+    font-size: 3rem;
+    text-align: center;
+    font-style: italic;
     transition: all 1s;
 }
 .u-totop {

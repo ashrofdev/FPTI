@@ -31,10 +31,13 @@ class App extends Component {
       data.forEach(user => {
         if (user.username.toLowerCase().includes(username.toLowerCase())) {
             this.setState({user: user})
-            console.log(this.state.user)
-        }
+            console.log(this.state.user) 
+        } 
         document.querySelector('.user').classList.add('u-totop')
       });
+    }).catch(()=>{
+      document.querySelector('.user').textContent = 'Bad internet connection'
+      console.log(document.querySelector('.user').textContent)
     })
   }
 
