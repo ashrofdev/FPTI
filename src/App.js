@@ -43,20 +43,19 @@ class App extends Component {
   }
 
   onSubmit = () => {
-    const months = {
-      m1: document.querySelector('.m1').value,
-      m2: document.querySelector('.m2').value,
-      m3: document.querySelector('.m3').value,
-      m4: document.querySelector('.m4').value,
-      m5: document.querySelector('.m5').value,
-      m6: document.querySelector('.m6').value,
-      m7: document.querySelector('.m7').value
-    }
-    console.log(months)
     fetch('https://cors-anywhere.herokuapp.com/https://fpt-server.herokuapp.com/submit-change', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(months)
+      body: JSON.stringify({
+        id: this.state.user.userid,
+        m1: document.querySelector('.m1').value,
+        m2: document.querySelector('.m2').value,
+        m3: document.querySelector('.m3').value,
+        m4: document.querySelector('.m4').value,
+        m5: document.querySelector('.m5').value,
+        m6: document.querySelector('.m6').value,
+        m7: document.querySelector('.m7').value
+      })
     })
   }
 
