@@ -29,6 +29,7 @@ class App extends Component {
     fetch('https://cors-anywhere.herokuapp.com/https://fpt-server.herokuapp.com/users').then((res)=>{
       return res.json()
     }).then(data=>{
+      console.log(data) 
       data.forEach(user => {
         if (user.username.toLowerCase().includes(username.toLowerCase())) {
             this.setState({user: user})
@@ -42,7 +43,9 @@ class App extends Component {
     })
   }
 
+
   onSubmit = () => {
+    console.log(this.state.user.userid)
     fetch('https://cors-anywhere.herokuapp.com/https://fpt-server.herokuapp.com/submit-change', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
