@@ -9,4 +9,9 @@
     height: 4rem;
     margin-bottom: .2rem;
     margin-left: 2rem;
+    outline: none;
+    transition: all .5s;
+}
+.status .m:focus {
+    transform: translateX(50%);
 }

@@ -5,7 +5,7 @@ import './admin.css'
 const Admin = ({onSearch, user}) => {
     return (
         <div className="admin">
-            <h1>welcome to the administrator page</h1>
+            <h1>welcome to the admin page</h1>
             <div className="search">
                 <input className="username" placeholder="Search user..." />
                 <button className="search-btn" onClick={onSearch}>
