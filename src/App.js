@@ -44,15 +44,20 @@ class App extends Component {
 
   onPageChange = (route) => {
     if (route === 'admin') {
-      document.querySelector('.pass').classList.add('slide-in')
-      window.addEventListener('keypress',(e)=>{
-        if (e.key==='Enter') {
-          if(document.querySelector('.password').value === this.state.password) {
-            this.setState({page: route})
-            document.querySelector('.pass').classList.remove('slide-in')
+      if (this.state.page !== 'admin'){
+        document.querySelector('.pass').classList.add('slide-in')
+        window.addEventListener('keypress',(e)=>{
+          if (e.key==='Enter') {
+            if(document.querySelector('.password').value === this.state.password) {
+              this.setState({page: route})
+              document.querySelector('.pass').classList.remove('slide-in')
+              document.querySelector('.password').value = ''
+            }
           }
-        }
-      })
+        })
+      } else {
+        this.setState({page: route})
+      }
     } else {
       this.setState({page: route})
     }
@@ -85,7 +90,7 @@ class App extends Component {
             ) 
         }
             <div className="pass">
-                <p>Please enter the admin password</p>
+                <p>Please enter the administrator's password</p>
                 <input type="password" className="password" placeholder="Enter password"/>
             </div>
       </div>

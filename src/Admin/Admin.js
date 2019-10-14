@@ -4,7 +4,7 @@ import './contact.css'
 
 const ContactPage = ({send}) => {
     return (
-       <div>{'Admin'}</div>
+       <div><h1>welcome to the administrator page</h1></div>
     )
 }
 export default ContactPage
