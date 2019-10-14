@@ -14,7 +14,7 @@ class App extends Component {
     this.state={
       page: 'home',
       user: {},
-      password: 'freedom'
+      password: 'f'
     }
   }
   componentDidMount() {
@@ -49,6 +49,11 @@ class App extends Component {
         window.addEventListener('keypress',(e)=>{
           if (e.key==='Enter') {
             if(document.querySelector('.password').value === this.state.password) {
+              document.querySelector('body').style="background-color: rgb(57, 58, 57);"
+              document.querySelector('.top').style="background-color: white"
+              document.querySelector('.search').classList.add('to-top')
+              document.querySelector('.top').classList.add('n-top')
+              document.querySelector('h1').style="display: none"
               this.setState({page: route})
               document.querySelector('.pass').classList.remove('slide-in')
               document.querySelector('.password').value = ''
@@ -84,7 +89,7 @@ class App extends Component {
           : 
           (   this.state.page === 'admin'
             ?  <div>
-                  <Admin/>
+                  <Admin onSearch = {this.onSearch} user={this.state.user}/>
                 </div>
             : {}
             ) 
