@@ -2,7 +2,7 @@ import React from 'react'
 import './admin.css'
 
 
-const Admin = ({onSearch, user}) => {
+const Admin = ({onSearch, user, onSubmit}) => {
     return (
         <div className="admin">
             <h1>welcome to the admin page</h1>
@@ -12,13 +12,13 @@ const Admin = ({onSearch, user}) => {
                     <i className="fa fa-search"> <span>SEARCH</span></i>
                 </button>
             </div>
-                <div className="user">
+            <div className="user">
                 <div className="head">
                     <h2 className="full-name">{user.fullname}</h2>
                     <p><span>User ID:</span> {user.userid}</p>
                 </div>
                 <div className="b-details">
-                    <h2>BALANCE DETAILS</h2>
+                    <h2>Edit balance details</h2>
                     <div className="table">
                         <div className="month">
                             <p className="m">Month 1</p>
@@ -30,37 +30,37 @@ const Admin = ({onSearch, user}) => {
                             <p className="m">Month 7</p>
                         </div>
                         <div className="status">
-                            <select className="m">
+                            <select className="m m1">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
-                            <select className="m">
+                            <select className="m m2">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
-                            <select className="m">
+                            <select className="m m3">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
-                            <select className="m">
+                            <select className="m m4">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
-                            <select className="m">
+                            <select className="m m5">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
-                            <select className="m">
+                            <select className="m m6">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
-                            <select className="m">
+                            <select className="m m7">
                                 <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
@@ -68,6 +68,7 @@ const Admin = ({onSearch, user}) => {
                         </div>
                     </div>
                 </div>
+                <button onClick={onSubmit} className="submit">Submit Changes</button>
             </div>
         </div>
        

@@ -1,3 +1,10 @@
+.admin h1 {
+    font-size: 3rem;
+    margin-top: -0;
+}
+.admin h2 {
+    color: white;
+}
 .admin .table {
     display: flex;
 }
@@ -14,4 +21,18 @@
 }
 .status .m:focus {
     transform: translateX(50%);
+}
+.submit {
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    color: white;
+    background-color: rgb(116, 197, 23);
+    box-shadow: 1px 1px 5px black;
+    transition: all .5s;
+    border: none;
+}
+.submit:hover {
+    background-color: rgb(145, 103, 12);
+    box-shadow: 2px 3px 5px black;
+    transform: translateY(-10%);
 }
