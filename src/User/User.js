@@ -2,6 +2,11 @@ import React from 'react'
 import './user.css'
 
 const User = ({user}) => {
+    if (user) {
+        console.log('Olodo')
+    }else {
+        console.log('nice')
+    }
     return (
         <div className="user">
             <div className="head">

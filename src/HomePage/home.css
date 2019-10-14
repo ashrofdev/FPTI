@@ -126,7 +126,10 @@ button {
     font-size: 1.3rem;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 990px) {
+    .top {
+        display: block;
+    }
     h1 {
         font-size: 4rem;
         transform: rotate(-5deg);
