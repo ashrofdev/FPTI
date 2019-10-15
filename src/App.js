@@ -59,10 +59,6 @@ class App extends Component {
         m6: document.querySelector('.m6').value,
         m7: document.querySelector('.m7').value
       })
-    }).then((res)=>{
-      return res.json()
-    }).then((data)=>{
-      console.log(data)
     }).catch((err)=>{
       console.log(err)
     })
