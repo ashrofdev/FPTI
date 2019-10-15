@@ -8,11 +8,11 @@
 .admin .table {
     display: flex;
 }
-.admin .month, .status {
+.admin .month, .admin .status {
     display: flex;
     flex-direction: column;
 }
-.status .m {
+.admin .status .m {
     height: 4rem;
     margin-bottom: .2rem;
     margin-left: 2rem;
