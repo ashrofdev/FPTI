@@ -46,7 +46,7 @@ class App extends Component {
 
   onSubmit = () => {
     console.log(this.state.user.userid)
-    fetch('https://cors-anywhere.herokuapp.com/https://fpt-server.herokuapp.com/submit-change', {
+    fetch('https://fpt-server.herokuapp.com/submit-change', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
