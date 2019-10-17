@@ -22,11 +22,12 @@ class App extends Component {
   }
 
   onSearch = () => {
+    document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
     document.querySelector('.top').classList.add('n-top')
     document.querySelector('h1').style="display: none"
     const username = document.querySelector('.username').value
-    fetch('https://cors-anywhere.herokuapp.com/https://fpt-server.herokuapp.com/users').then((res)=>{
+    fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
       return res.json()
     }).then(data=>{
       console.log(data) 
@@ -36,6 +37,7 @@ class App extends Component {
             console.log(this.state.user) 
         } 
         document.querySelector('.user').classList.add('u-totop')
+        document.querySelector('.loader').classList.remove('come')
       });
     }).catch(()=>{
       document.querySelector('.user').textContent = 'Bad internet connection'
@@ -119,6 +121,9 @@ class App extends Component {
             <div className="pass">
                 <p>Please enter the administrator's password</p>
                 <input type="password" className="password" placeholder="Enter password"/>
+            </div>
+            <div className="loader">
+              <img src= {require('./img/1.gif')}/>
             </div>
       </div>
     );
