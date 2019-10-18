@@ -1,6 +1,6 @@
 .nav {
     display: flex;
-    align-items: center;
+    align-items: center; 
 }
 .nav .list {
     display: flex;

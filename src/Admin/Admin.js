@@ -2,7 +2,7 @@ import React from 'react'
 import './admin.css'
 
 
-const Admin = ({onSearch, user, onSubmit}) => {
+const Admin = ({onSearch, user, onSubmit, cPass, onPassChange}) => {
     return (
         <div className="admin">
             <h1>welcome to the admin page</h1>
@@ -71,12 +71,12 @@ const Admin = ({onSearch, user, onSubmit}) => {
                 <button onClick={onSubmit} className="submit">Submit Changes</button>
             </div>
             <div className="pass-sec">
-                <button className="change-pass">Change password</button>
+                <button className="change-pass" onClick={cPass}>Change password</button>
                 <div className="p-change">
-                    <input type="password" placeholder="Old password"/>
-                    <input type="password" placeholder="New password"/>
-                    <input type="password" placeholder="Confirm password"/>
-                    <button className="change">Change</button>
+                    <input className="old" type="password" placeholder="Old password"/>
+                    <input className="new" type="password" placeholder="New password"/>
+                    <input className="conm" type="password" placeholder="Confirm password"/>
+                    <button className="change" onClick={onPassChange}>Change</button>
                 </div>
             </div>
         </div>

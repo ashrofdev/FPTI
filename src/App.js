@@ -18,11 +18,6 @@ class App extends Component {
       password: ''
     }
   }
-  componentDidMount() {
-    localStorage.setItem('password', 'freedom')
-    let pass = localStorage.getItem('password')
-    this.setState({password: pass})
-  }
 
   onSearch = () => {
     document.querySelector('.loader').classList.add('come')
@@ -78,6 +73,30 @@ class App extends Component {
     })
   }
 
+  cPass = (e) => {
+    e.target.remove()
+    document.querySelector('.p-change').classList.add('p-show')
+  }
+  onPassChange = () => {
+    let pass = localStorage.getItem('password')
+    const passw = {
+      old: document.querySelector('.old').value,
+      new: document.querySelector('.new').value,
+      conm: document.querySelector('.conm').value
+    }
+    if (passw.old === pass && passw.new === passw.conm) {
+      localStorage.setItem('password', passw.conm)
+      this.setState({password: pass})
+      document.querySelector('.p-change').classList.remove('p-show')
+    }else if (passw.old !== pass) {
+      document.querySelector('.old').classList.add('wrong')
+    }else if (passw.new !== passw.conm) {
+      document.querySelector('.old').classList.remove('wrong')
+      document.querySelector('.new').classList.add('wrong')
+      document.querySelector('.conm').classList.add('wrong')
+    }
+  }
+
   onPageChange = (route) => {
     if (route === 'admin') {
       if (this.state.page !== 'admin'){
@@ -126,7 +145,9 @@ class App extends Component {
           : 
           (   this.state.page === 'admin'
             ?  <div>
-                  <Admin onSearch={this.onSearch} user={this.state.user} onSubmit={this.onSubmit}/>
+                  <Admin onSearch={this.onSearch} user={this.state.user}
+                  cPass={this.cPass} onSubmit={this.onSubmit} 
+                  onPassChange={this.onPassChange}/>
                 </div>
             : {}
             ) 

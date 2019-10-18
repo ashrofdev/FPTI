@@ -37,6 +37,10 @@
     transform: translateY(-10%);
 }
 
+button {
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+}
 .pass-sec {
     display: flex;
     flex-direction: column;
@@ -48,19 +52,28 @@
     flex-direction: column;
     width: 30rem;
     margin: auto;
+    opacity: 0;
+    z-index: -1;
+    transform: translateY(-50%);
+    transition: all .5s;
+}
+.p-show {
+    opacity: 1;
+    transform: none;
+    z-index: 100;
 }
 .p-change input {
     height: 2rem;
     padding: 1rem;
     margin-bottom: 1rem;
     outline: none;
-    transition: all .4rem;
+    transition: all .4s;
 }
 .p-change input:focus {
     border: none;
-    border-bottom: 2px solid green;
+    border-bottom: .5rem solid green;
 }
 .wrong {
     border: none;
-    border-bottom: 1px solid red;
+    border-bottom: .5rem solid red;
 }
