@@ -40,6 +40,22 @@ html {
   z-index: 1000;
 }
 
+.alert {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-150%);
+  border-radius: 1rem;
+  background-color: rgba(218, 248, 217, 0.986);
+  color: rgb(53, 247, 4);
+  font-size: 2.5rem;
+  padding: 1rem 5rem;
+  transition: all .5s;
+}
+.alert-up {
+  transform: translateX(-50%);
+}
+
 
 @media only screen and (max-width: 1000px) {
   body {

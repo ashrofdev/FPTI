@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import { ScrollUp } from './LittleComponents/LittleComponents'
 
 
+
 class App extends Component {
 
   constructor() {
@@ -41,12 +42,14 @@ class App extends Component {
       });
     }).catch(()=>{
       document.querySelector('.user').textContent = 'Bad internet connection'
+      document.querySelector('.loader').classList.remove('come')
       console.log(document.querySelector('.user').textContent)
     })
   }
 
 
   onSubmit = () => {
+    document.querySelector('.loader').classList.add('come')
     console.log(this.state.user.userid)
     fetch('https://fpt-server.herokuapp.com/submit-change', {
       method: 'POST',
@@ -61,6 +64,13 @@ class App extends Component {
         m6: document.querySelector('.m6').value,
         m7: document.querySelector('.m7').value
       })
+    }).then((e)=>{
+      console.log(3)
+      document.querySelector('.loader').classList.remove('come')
+      document.querySelector('.alert').classList.add('alert-up')
+      setTimeout(() => {
+        document.querySelector('.alert').classList.remove('alert-up')
+      }, 3000);
     }).catch((err)=>{
       console.log(err)
     })
@@ -88,6 +98,7 @@ class App extends Component {
         this.setState({page: route})
       }
     } else {
+      document.querySelector('body').style="background-color: white"
       this.setState({page: route})
     }
     console.log(route)
@@ -125,6 +136,7 @@ class App extends Component {
             <div className="loader">
               <img src= {require('./img/1.gif')}/>
             </div>
+            <p className="alert">Update successful</p>
       </div>
     );
   }
