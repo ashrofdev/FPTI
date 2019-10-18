@@ -15,7 +15,7 @@ class App extends Component {
     this.state={
       page: 'admin',
       user: {},
-      password: ''
+      password: localStorage.getItem('password')
     }
   }
 
@@ -78,19 +78,18 @@ class App extends Component {
     document.querySelector('.p-change').classList.add('p-show')
   }
   onPassChange = () => {
-    let pass = localStorage.getItem('password')
     const passw = {
       old: document.querySelector('.old').value,
       new: document.querySelector('.new').value,
       conm: document.querySelector('.conm').value
     }
-    if (passw.old === pass && passw.new === passw.conm) {
+    if (passw.old === this.state.password && passw.new === passw.conm) {
       localStorage.setItem('password', passw.conm)
-      this.setState({password: pass})
+      this.setState({password: localStorage.getItem('password')})
       document.querySelector('.p-change').classList.remove('p-show')
-    }else if (passw.old !== pass) {
+    }else if (passw.old !== this.state.password) {
       document.querySelector('.old').classList.add('wrong')
-    }else if (passw.new !== passw.conm) {
+    }else if (passw.new !== this.state.password.conm) {
       document.querySelector('.old').classList.remove('wrong')
       document.querySelector('.new').classList.add('wrong')
       document.querySelector('.conm').classList.add('wrong')
@@ -104,8 +103,6 @@ class App extends Component {
         window.addEventListener('keypress',(e)=>{
           if (e.key==='Enter') {
             if(document.querySelector('.password').value === this.state.password) {
-              document.querySelector('body').style="background-color: rgb(57, 58, 57);"
-              document.querySelector('.top').style="background-color: white"
               document.querySelector('.search').classList.add('to-top')
               document.querySelector('.top').classList.add('n-top')
               document.querySelector('h1').style="display: none"
@@ -119,7 +116,6 @@ class App extends Component {
         this.setState({page: route})
       }
     } else {
-      document.querySelector('body').style="background-color: white"
       this.setState({page: route})
     }
     console.log(route)

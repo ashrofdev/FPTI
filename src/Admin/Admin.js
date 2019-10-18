@@ -32,36 +32,43 @@ const Admin = ({onSearch, user, onSubmit, cPass, onPassChange}) => {
                         <div className="status">
                             <select className="m m1">
                                 <option>{user.m1}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
                             <select className="m m2">
                                 <option>{user.m2}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
                             <select className="m m3">
                                 <option>{user.m3}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
                             <select className="m m4">
                                 <option>{user.m4}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
                             <select className="m m5">
                                 <option>{user.m5}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
                             <select className="m m6">
                                 <option>{user.m6}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
                             <select className="m m7">
                                 <option>{user.m7}</option>
+                                <option>NULL</option>
                                 <option>PENDING</option>
                                 <option>COMPLETED</option>
                             </select>
