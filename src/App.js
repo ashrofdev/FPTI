@@ -13,13 +13,15 @@ class App extends Component {
   constructor() {
     super()
     this.state={
-      page: 'home',
+      page: 'admin',
       user: {},
-      password: 'f'
+      password: ''
     }
   }
   componentDidMount() {
-    
+    localStorage.setItem('password', 'freedom')
+    let pass = localStorage.getItem('password')
+    this.setState({password: pass})
   }
 
   onSearch = () => {

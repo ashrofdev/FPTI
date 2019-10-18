@@ -36,3 +36,31 @@
     box-shadow: 2px 3px 5px black;
     transform: translateY(-10%);
 }
+
+.pass-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.p-change {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    margin: auto;
+}
+.p-change input {
+    height: 2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: all .4rem;
+}
+.p-change input:focus {
+    border: none;
+    border-bottom: 2px solid green;
+}
+.wrong {
+    border: none;
+    border-bottom: 1px solid red;
+}

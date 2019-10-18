@@ -70,6 +70,15 @@ const Admin = ({onSearch, user, onSubmit}) => {
                 </div>
                 <button onClick={onSubmit} className="submit">Submit Changes</button>
             </div>
+            <div className="pass-sec">
+                <button className="change-pass">Change password</button>
+                <div className="p-change">
+                    <input type="password" placeholder="Old password"/>
+                    <input type="password" placeholder="New password"/>
+                    <input type="password" placeholder="Confirm password"/>
+                    <button className="change">Change</button>
+                </div>
+            </div>
         </div>
        
     )
