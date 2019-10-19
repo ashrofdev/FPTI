@@ -98,7 +98,7 @@ class App extends Component {
     }
     fetch('https://fpt-server.herokuapp.com/ch-password', {
         method: 'post',
-        headers: {'Content-Type': 'application json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             old: passw.old,
             new: passw.conm
