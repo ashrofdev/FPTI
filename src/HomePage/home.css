@@ -1,6 +1,7 @@
 .top {
     display: grid;
     grid-template-columns: 1fr 100rem 1fr;
+    margin-bottom: 4rem;
 }
 .top .items {
     grid-column: 2/3;
@@ -133,7 +134,6 @@ button {
     }
     h1 {
         font-size: 4rem;
-        transform: rotate(-5deg);
       }
     .search input {
         transform: translateX(10%);
