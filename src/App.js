@@ -96,9 +96,22 @@ class App extends Component {
       new: document.querySelector('.new').value,
       conm: document.querySelector('.conm').value
     }
+    fetch('https://fpt-server.herokuapp.com/ch-password', {
+        method: 'post',
+        headers: {'Content-Type': 'application json'},
+        body: JSON.stringify({
+            old: passw.old,
+            new: passw.conm
+        })
+      }).then((res)=>{
+        document.querySelector('.p-change').classList.remove('p-show')
+        console.log(res)
+      }).catch((err)=>{
+        console.log(err)
+      })
     if (passw.old === this.state.password && passw.new === passw.conm) {
       this.setState({password: passw.conm})
-      document.querySelector('.p-change').classList.remove('p-show')
+      
     }else if (passw.old !== this.state.password) {
       document.querySelector('.old').classList.add('wrong')
     }else if (passw.new !== this.state.password.conm) {
