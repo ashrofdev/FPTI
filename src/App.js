@@ -24,7 +24,7 @@ class App extends Component {
       return res.json()
     }).then((data)=>{
       console.log(data)
-      this.setState({password: data})
+      this.setState({password: data[0].password})
     })
   }
 
