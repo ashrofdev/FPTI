@@ -19,6 +19,15 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    fetch('https://fpt-server.herokuapp.com/password').then((res)=>{
+      return res.json()
+    }).then((data)=>{
+      console.log(data)
+      this.setState({password: data})
+    })
+  }
+
   onSearch = () => {
     document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
