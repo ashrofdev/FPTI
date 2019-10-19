@@ -24,7 +24,7 @@ class App extends Component {
       return res.json()
     }).then((data)=>{
       console.log(data)
-      this.setState({password: data[0].pass})
+      this.setState({password: data[1].pass})
     })
   }
 
@@ -96,7 +96,9 @@ class App extends Component {
       new: document.querySelector('.new').value,
       conm: document.querySelector('.conm').value
     }
-    fetch('https://fpt-server.herokuapp.com/ch-password', {
+    
+    if (passw.old === this.state.password && passw.new === passw.conm) {
+      fetch('https://fpt-server.herokuapp.com/ch-password', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -105,13 +107,11 @@ class App extends Component {
         })
       }).then((res)=>{
         document.querySelector('.p-change').classList.remove('p-show')
+        this.setState({password: passw.conm})
         console.log(res)
       }).catch((err)=>{
         console.log(err)
       })
-    if (passw.old === this.state.password && passw.new === passw.conm) {
-      this.setState({password: passw.conm})
-      
     }else if (passw.old !== this.state.password) {
       document.querySelector('.old').classList.add('wrong')
     }else if (passw.new !== this.state.password.conm) {

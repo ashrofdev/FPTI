@@ -42,6 +42,7 @@
 button {
     padding: 1rem 2rem;
     margin-bottom: 1rem;
+    box-shadow: 2px 3px 4px rgb(92, 91, 91);;
 }
 .pass-sec {
     display: flex;
