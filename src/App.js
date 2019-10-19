@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super()
     this.state={
-      page: 'admin',
+      page: 'home',
       user: {},
       password: ''
     }
