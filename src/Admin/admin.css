@@ -1,5 +1,7 @@
 .admin h1 {
     font-size: 3rem;
+    background-color: black;
+    background-image: none;
     margin-top: -0;
 }
 .admin h2 {
@@ -86,4 +88,4 @@ button {
     .search input {
         width: 15rem;
     }
-  }
+}

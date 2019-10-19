@@ -76,12 +76,12 @@
     border: 1px solid black;
 }
 
-@media only screen and (max-width: 270px) {
-    .logo {
-        width: 5rem;
-        height: auto;
+@media only screen and (max-width: 700px) {
+    .table {
+        display: flex;
     }
-    .search input {
-        width: 15rem;
+    .month, .status {
+        display: flex;
+        flex-direction: column;
     }
-  }
+}

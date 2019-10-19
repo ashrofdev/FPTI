@@ -38,7 +38,11 @@ class App extends Component {
         document.querySelector('.loader').classList.remove('come')
       });
     }).catch(()=>{
-      document.querySelector('.user').textContent = 'Bad internet connection'
+      document.querySelector('.alert').textContent="Network error"
+      document.querySelector('.alert').classList.add('alert-fail')
+      setTimeout(() => {
+        document.querySelector('.alert').classList.remove('alert-fail')
+      }, 3000);
       document.querySelector('.loader').classList.remove('come')
       console.log(document.querySelector('.user').textContent)
     })
