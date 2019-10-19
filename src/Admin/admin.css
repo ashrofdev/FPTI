@@ -39,7 +39,7 @@
     transform: translateY(-10%);
 }
 
-button {
+.admin button {
     padding: 1rem 2rem;
     margin-bottom: 1rem;
     box-shadow: 2px 3px 4px rgb(92, 91, 91);;
