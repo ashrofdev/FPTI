@@ -15,7 +15,7 @@ class App extends Component {
     this.state={
       page: 'admin',
       user: {},
-      password: localStorage.getItem('password')
+      password: ''
     }
   }
 
@@ -88,8 +88,7 @@ class App extends Component {
       conm: document.querySelector('.conm').value
     }
     if (passw.old === this.state.password && passw.new === passw.conm) {
-      localStorage.setItem('password', passw.conm)
-      this.setState({password: localStorage.getItem('password')})
+      this.setState({password: passw.conm})
       document.querySelector('.p-change').classList.remove('p-show')
     }else if (passw.old !== this.state.password) {
       document.querySelector('.old').classList.add('wrong')
