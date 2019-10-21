@@ -1,7 +1,6 @@
 .top {
     display: grid;
     grid-template-columns: 1fr 100rem 1fr;
-    margin-bottom: 4rem;
 }
 .top .items {
     grid-column: 2/3;

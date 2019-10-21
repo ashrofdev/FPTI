@@ -5,7 +5,6 @@ import './admin.css'
 const Admin = ({onSearch, user, onSubmit, cPass, onPassChange}) => {
     return (
         <div className="admin">
-            <h1>welcome to the admin page</h1>
             <div className="search">
                 <input className="username" placeholder="Search user..." />
                 <button className="search-btn" onClick={onSearch}>
