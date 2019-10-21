@@ -26,6 +26,11 @@ class App extends Component {
       console.log(data)
       this.setState({password: data[1].pass})
     })
+    window.addEventListener('keypress',(e)=>{
+      if (e.key==='Enter') {
+        this.onSearch()
+      }
+    })
   }
 
   onSearch = () => {
@@ -141,6 +146,7 @@ class App extends Component {
         this.setState({page: route})
       }
     } else {
+      document.querySelector('.pass').classList.remove('slide-in')
       this.setState({page: route})
     }
     console.log(route)

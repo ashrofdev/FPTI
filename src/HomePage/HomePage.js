@@ -7,7 +7,7 @@ import User from '../User/User'
 const HomePage = ({onSearch, user}) => {
     return (
         <div className="home">
-            <h1>FREEDOM PROJECT TRIBE</h1>
+            <h1>FPT<span> Ibadan</span></h1>
             <div className="search">
                 <input className="username" placeholder="Search user..." />
                 <button className="search-btn" onClick={onSearch}>

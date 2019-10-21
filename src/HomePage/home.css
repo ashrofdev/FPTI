@@ -17,18 +17,46 @@
     width: 10rem;
     height: auto;
 }
+
+@keyframes bhead {
+    0% {
+        transform: translateY(-300%);
+    }
+    100% {
+        transform: none;
+    }
+}
+@keyframes search {
+    0% {
+        transform: translateX(30%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 h1 {
+    animation: bhead 1s ease-in;
     margin-top: 10rem;
     text-shadow: .5rem .8rem 1px rgba(3, 3, 3, 0.103);
-    font-size: 7rem;
+    font-size: 10rem;
     font-family: monospace;
-    background-image: linear-gradient(to right, rgb(48, 245, 48) 10%, rgb(255, 166, 0)50%);
+    background-image: linear-gradient(to right, rgb(48, 245, 48) 45%, rgb(255, 166, 0)50%);
     background-clip: text;
     text-align: center;
     color: transparent;
 }
+h1 span {
+    font-size: 3rem;
+    font-family: sans-serif;
+    text-shadow: .4rem .4rem 4px rgba(0, 0, 0, 0.308);
+}
 
 .search { 
+    animation: search .5s .8s ease-out;
+    animation-fill-mode: backwards;
     text-align: center;
     padding: 2rem;
     margin-top: 5rem;
