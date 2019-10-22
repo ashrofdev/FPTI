@@ -37,7 +37,6 @@ class App extends Component {
     document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
     document.querySelector('.top').classList.add('n-top')
-    document.querySelector('h1').style="display: none"
     const username = document.querySelector('.username').value
     fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
       return res.json()
