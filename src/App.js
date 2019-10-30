@@ -4,7 +4,9 @@ import HomePage from './HomePage/HomePage';
 import Admin from './Admin/Admin'
 import NavBar from './LittleComponents/NavBar';
 import 'font-awesome/css/font-awesome.min.css'
+import Dropzone from 'react-dropzone'
 import { ScrollUp } from './LittleComponents/LittleComponents'
+import './Firebase'
 
 
 
@@ -37,6 +39,9 @@ class App extends Component {
     document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
     document.querySelector('.top').classList.add('n-top')
+    if (this.state.page === 'home') {
+      document.querySelector('h1').style="display: none"
+    }
     const username = document.querySelector('.username').value
     fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
       return res.json()
@@ -44,10 +49,10 @@ class App extends Component {
       console.log(data) 
       data.forEach(user => {
         if (user.username.toLowerCase().includes(username.toLowerCase())) {
-            this.setState({user: user})
-            console.log(this.state.user) 
+          this.setState({user: user})
+          console.log(this.state.user) 
+          document.querySelector('.user').classList.addd('u-totop')
         } 
-        document.querySelector('.user').classList.add('u-totop')
         document.querySelector('.loader').classList.remove('come')
       });
     }).catch(()=>{
@@ -152,10 +157,48 @@ class App extends Component {
     document.querySelector('.nav .list').classList.remove('show')
     document.querySelector('.nav-btn').classList.remove('n-btn')
   }
+
+  drop = (file) => {
+    console.log(file)
+    fetch('https://fpt-server.herokuapp.com/files', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            file: file,
+        })
+      }).then((res)=>{
+        console.log(res)
+        return res.json()
+        .then((data)=>{
+          console.log(data)
+        })
+      }).catch((err)=>{
+        console.log(err)
+      })
+  }
  
   render() {
     return (
       <div className="App">
+        <section>
+        <Dropzone
+            onDrop={(e)=> this.drop(e)}
+            multiple={false}>
+            {({ getRootProps, getInputProps }) => {
+              console.log("input props", getInputProps)
+              return (
+                  <div
+                      {...getRootProps()}
+                  >
+                      <input {...getInputProps()} />
+                      {
+                          <p>Try dropping some files here, or click to select files to upload.</p>
+                      }
+                  </div>
+              )
+            }}
+        </Dropzone>
+        </section>
         <div className="top">
             <div className="items">
               <div className="img">
