@@ -212,25 +212,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <section>
-        <Dropzone
-            onDrop={(e)=> this.drop(e)}
-            multiple={false}>
-            {({ getRootProps, getInputProps }) => {
-              console.log("input props", getInputProps)
-              return (
-                  <div
-                      {...getRootProps()}
-                  >
-                      <input {...getInputProps()} />
-                      {
-                          <p>Try dropping some files here, or click to select files to upload.</p>
-                      }
-                  </div>
-              )
-            }}
-        </Dropzone>
-        </section>
         <div className="top">
             <div className="items">
               <div className="img">
