@@ -17,6 +17,16 @@ import './user.css'
 // L: "0"
 
 const User = ({user}) => {
+    console.log(user.F)
+     const value = (item) =>{
+        if (item === '1') {
+            return 'COMPLETED'
+        } else if (item === '0') {
+            return 'NULL'
+        } else {
+            return 'PENDING'
+        }
+    }
     return (
         <div className="user">
             <div className="head">
@@ -42,13 +52,13 @@ const User = ({user}) => {
                         <p>Month 7</p>
                     </div>
                     <div className="status">
-                        <p>{user.m1}</p>
-                        <p>{user.m2}</p>
-                        <p>{user.m3}</p>
-                        <p>{user.m4}</p>
-                        <p>{user.m5}</p>
-                        <p>{user.m6}</p>
-                        <p>{user.m7}</p>
+                        <p>{value(user.F)}</p>
+                        <p>{value(user.G)}</p>
+                        <p>{value(user.H)}</p>
+                        <p>{value(user.I)}</p>
+                        <p>{value(user.J)}</p>
+                        <p>{value(user.K)}</p>
+                        <p>{value(user.L)}</p>
                     </div>
                 </div>
             </div>

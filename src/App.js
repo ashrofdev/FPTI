@@ -58,8 +58,8 @@ class App extends Component {
         this.setState({user: user})
         console.log(user)
         console.log(this.state.user)
-        document.querySelector('.loader').classList.remove('come')
         document.querySelector('.user').classList.add('u-totop')
+        document.querySelector('.loader').classList.remove('come')
       }
     })
     // 
