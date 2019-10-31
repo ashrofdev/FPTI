@@ -18,7 +18,8 @@ class App extends Component {
       page: 'home',
       users: [],
       user: {},
-      password: ''
+      password: '123',
+      userNum: 0
     }
   }
 
@@ -32,12 +33,7 @@ class App extends Component {
       console.log(this.state.users)
       
     })
-    fetch('https://fpt-server.herokuapp.com/password').then((res)=>{
-      return res.json()
-    }).then((data)=>{
-      console.log(data)
-      this.setState({password: data[1].pass})
-    })
+    
     window.addEventListener('keypress',(e)=>{
       if (e.key==='Enter') {
         this.onSearch()
@@ -53,8 +49,9 @@ class App extends Component {
       document.querySelector('h1').style="display: none"
     }
     const username = document.querySelector('.username').value
-    this.state.users.forEach(user=>{
+    this.state.users.forEach((user, i)=>{
       if (user.B.toLowerCase().includes(username.toLowerCase())) {
+        this.setState({userNum: i})
         this.setState({user: user})
         console.log(user)
         console.log(this.state.user)
@@ -85,23 +82,48 @@ class App extends Component {
     //   console.log(document.querySelector('.user').textContent)
     // })
   }
+// A: "43725"
+// B: "KAREEM AMOD TITILOPE"
+// C: "8062105312"
+// D: "AMOD82"
+// E: "NG999638"
+// F: "0"
+// G: "0"
+// H: "0"
+// I: "0"
+// J: "0"
+// K: "0"
+// L: "0"
 
 
   onSubmit = () => {
+    console.log(this.state.userNum)
+    const el = {
+      id: this.state.user.userid,
+      m1: document.querySelector('.m1').value,
+      m2: document.querySelector('.m2').value,
+      m3: document.querySelector('.m3').value,
+      m4: document.querySelector('.m4').value,
+      m5: document.querySelector('.m5').value,
+      m6: document.querySelector('.m6').value,
+      m7: document.querySelector('.m7').value
+    }
+    firebaseDB.ref().child(this.state.userNum).update({
+      'F': el.m1,
+      'G': el.m2,
+      'H': el.m3,
+      'I': el.m4,
+      "J": el.m5,
+      "K": el.m6,
+      "L": el.m7
+    })
     document.querySelector('.loader').classList.add('come')
     console.log(this.state.user.userid)
     fetch('https://fpt-server.herokuapp.com/submit-change', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        id: this.state.user.userid,
-        m1: document.querySelector('.m1').value,
-        m2: document.querySelector('.m2').value,
-        m3: document.querySelector('.m3').value,
-        m4: document.querySelector('.m4').value,
-        m5: document.querySelector('.m5').value,
-        m6: document.querySelector('.m6').value,
-        m7: document.querySelector('.m7').value
+        
       })
     }).then((e)=>{
       console.log(3)
@@ -153,19 +175,9 @@ class App extends Component {
   onPageChange = (route) => {
     if (route === 'admin') {
       if (this.state.page !== 'admin'){
-        document.querySelector('.pass').classList.add('slide-in')
-        window.addEventListener('keypress',(e)=>{
-          if (e.key==='Enter') {
-            if(document.querySelector('.password').value === this.state.password) {
-              document.querySelector('.search').classList.add('to-top')
-              document.querySelector('.top').classList.add('n-top')
-              document.querySelector('h1').style="display: none"
-              this.setState({page: route})
-              document.querySelector('.pass').classList.remove('slide-in')
-              document.querySelector('.password').value = ''
-            }
-          }
-        })
+        this.setState({page: route})
+        console.log(this.state.users, '....')
+       
       } else {
         this.setState({page: route})
       }

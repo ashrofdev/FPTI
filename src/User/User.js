@@ -3,21 +3,8 @@ import './user.css'
 
 
 
-// A: "43725"
-// B: "KAREEM AMOD TITILOPE"
-// C: "8062105312"
-// D: "AMOD82"
-// E: "NG999638"
-// F: "0"
-// G: "0"
-// H: "0"
-// I: "0"
-// J: "0"
-// K: "0"
-// L: "0"
 
 const User = ({user}) => {
-    console.log(user.F)
      const value = (item) =>{
         if (item === '1') {
             return 'COMPLETED'
