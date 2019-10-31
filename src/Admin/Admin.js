@@ -7,9 +7,9 @@ import React, { Component } from 'react';
 class Admin extends Component {
     
     value = (item) =>{
-        if (item === '1') {
+        if (item === '1' || item === 'COMPLETED') {
             return 'COMPLETED'
-        } else if (item === '0') {
+        } else if (item === '0' || item === 'NULL') {
             return 'NULL'
         } else {
             return 'PENDING'

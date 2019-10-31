@@ -27,8 +27,11 @@
 }
 .user-bio {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, max-content);
     text-align: center;
+    justify-content: space-between;
+    width: 70rem;
+    margin: auto;
     padding: 1rem;
 }
 

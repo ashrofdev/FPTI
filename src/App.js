@@ -51,8 +51,8 @@ class App extends Component {
     const username = document.querySelector('.username').value
     this.state.users.forEach((user, i)=>{
       if (user.B.toLowerCase().includes(username.toLowerCase())) {
-        this.setState({userNum: i})
         this.setState({user: user})
+        this.setState({userNum: i})
         console.log(user)
         console.log(this.state.user)
         document.querySelector('.user').classList.add('u-totop')

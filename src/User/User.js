@@ -21,10 +21,17 @@ const User = ({user}) => {
                 <img alt=""/>
             </div>
             <div className="user-bio">
-                <p><span>Username:</span> {user.D}</p>
-                <p><span>User ID:</span> {user.E}</p>
-                <p><span>Reg date:</span> {user.regdate}</p>
-                <p><span>Phone:</span> {user.C}</p>
+                <div>
+                    <p><span>Username:</span> {user.D}</p>
+                    <p><span>User ID:</span> {user.E}</p>
+                </div>
+                <div>
+                    <img src={require('../img/default.png')}/>
+                </div>
+                <div>
+                    <p><span>Reg date:</span> {user.regdate}</p>
+                    <p><span>Phone:</span> {user.C}</p>
+                </div>
             </div>
             <div className="b-details">
                 <h2>BALANCE DETAILS</h2>
