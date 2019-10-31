@@ -1,18 +1,33 @@
 import React from 'react'
 import './user.css'
 
+
+
+// A: "43725"
+// B: "KAREEM AMOD TITILOPE"
+// C: "8062105312"
+// D: "AMOD82"
+// E: "NG999638"
+// F: "0"
+// G: "0"
+// H: "0"
+// I: "0"
+// J: "0"
+// K: "0"
+// L: "0"
+
 const User = ({user}) => {
     return (
         <div className="user">
             <div className="head">
-                <h2 className="full-name">{user.fullname}</h2>
+                <h2 className="full-name">{user.B}</h2>
                 <img alt=""/>
             </div>
             <div className="user-bio">
-                <p><span>Username:</span> {user.username}</p>
-                <p><span>User ID:</span> {user.userid}</p>
+                <p><span>Username:</span> {user.D}</p>
+                <p><span>User ID:</span> {user.E}</p>
                 <p><span>Reg date:</span> {user.regdate}</p>
-                <p><span>Phone:</span> {user.phone}</p>
+                <p><span>Phone:</span> {user.C}</p>
             </div>
             <div className="b-details">
                 <h2>BALANCE DETAILS</h2>

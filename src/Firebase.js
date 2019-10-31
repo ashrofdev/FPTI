@@ -16,8 +16,5 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const firebaseDB = firebase.database()
+export const firebaseDB = firebase.database()
 
-firebaseDB.ref('users').once('value').then((snapshot)=>{
-    console.log(snapshot.val())
-})

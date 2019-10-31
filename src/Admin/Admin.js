@@ -13,8 +13,8 @@ const Admin = ({onSearch, user, onSubmit, cPass, onPassChange}) => {
             </div>
             <div className="user">
                 <div className="head">
-                    <h2 className="full-name">{user.fullname}</h2>
-                    <p><span>User ID:</span> {user.userid}</p>
+                    <h2 className="full-name">{user.B}</h2>
+                    <p><span>User ID:</span> {user.E}</p>
                 </div>
                 <div className="b-details">
                     <h2>Edit balance details</h2>

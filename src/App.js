@@ -7,7 +7,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import Dropzone from 'react-dropzone'
 import { ScrollUp } from './LittleComponents/LittleComponents'
 import './Firebase'
-
+import { firebaseDB } from './Firebase'
 
 
 class App extends Component {
@@ -16,12 +16,22 @@ class App extends Component {
     super()
     this.state={
       page: 'home',
+      users: [],
       user: {},
       password: ''
     }
   }
 
   componentDidMount(){
+    firebaseDB.ref().once('value').then((snapshot)=>{
+      const users = []
+      snapshot.val().forEach(e => {
+          users.push(e)
+      });
+      this.setState({users: users})
+      console.log(this.state.users)
+      
+    })
     fetch('https://fpt-server.herokuapp.com/password').then((res)=>{
       return res.json()
     }).then((data)=>{
@@ -43,27 +53,37 @@ class App extends Component {
       document.querySelector('h1').style="display: none"
     }
     const username = document.querySelector('.username').value
-    fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
-      return res.json()
-    }).then(data=>{
-      console.log(data) 
-      data.forEach(user => {
-        if (user.username.toLowerCase().includes(username.toLowerCase())) {
-          this.setState({user: user})
-          console.log(this.state.user) 
-          document.querySelector('.user').classList.addd('u-totop')
-        } 
+    this.state.users.forEach(user=>{
+      if (user.B.toLowerCase().includes(username.toLowerCase())) {
+        this.setState({user: user})
+        console.log(user)
+        console.log(this.state.user)
         document.querySelector('.loader').classList.remove('come')
-      });
-    }).catch(()=>{
-      document.querySelector('.alert').textContent="Network error"
-      document.querySelector('.alert').classList.add('alert-fail')
-      setTimeout(() => {
-        document.querySelector('.alert').classList.remove('alert-fail')
-      }, 3000);
-      document.querySelector('.loader').classList.remove('come')
-      console.log(document.querySelector('.user').textContent)
+        document.querySelector('.user').classList.add('u-totop')
+      }
     })
+    // 
+    // fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
+    //   return res.json()
+    // }).then(data=>{
+    //   console.log(data) 
+    //   data.forEach(user => {
+    //     if (user.username.toLowerCase().includes(username.toLowerCase())) {
+    //       this.setState({user: user})
+    //       console.log(this.state.user) 
+    //       document.querySelector('.user').classList.addd('u-totop')
+    //     } 
+    //     document.querySelector('.loader').classList.remove('come')
+    //   });
+    // }).catch(()=>{
+    //   document.querySelector('.alert').textContent="Network error"
+    //   document.querySelector('.alert').classList.add('alert-fail')
+    //   setTimeout(() => {
+    //     document.querySelector('.alert').classList.remove('alert-fail')
+    //   }, 3000);
+    //   document.querySelector('.loader').classList.remove('come')
+    //   console.log(document.querySelector('.user').textContent)
+    // })
   }
 
 
