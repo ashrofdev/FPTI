@@ -4,7 +4,7 @@ import User from '../User/User'
 
 
 
-const HomePage = ({onSearch, user}) => {
+const HomePage = ({onSearch, user, imgURL}) => {
     return (
         <div className="home">
             <h1>FPT<span> Ibadan</span></h1>
@@ -14,7 +14,7 @@ const HomePage = ({onSearch, user}) => {
                     <i className="fa fa-search"> <span>SEARCH</span></i>
                 </button>
             </div>
-            <User user={user}/>
+            <User user={user} imgURL={imgURL}/>
         </div>
     )
 }

@@ -7,7 +7,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import Dropzone from 'react-dropzone'
 import { ScrollUp } from './LittleComponents/LittleComponents'
 import './Firebase'
-import { firebaseDB } from './Firebase'
+import { firebaseDB, firebas } from './Firebase'
 
 
 class App extends Component {
@@ -19,11 +19,13 @@ class App extends Component {
       users: [],
       user: {},
       password: '123',
-      userNum: 0
+      userNum: 0,
+      imgURL: ''
     }
   }
 
   componentDidMount(){
+    
     firebaseDB.ref().once('value').then((snapshot)=>{
       const users = []
       snapshot.val().forEach(e => {
@@ -59,6 +61,16 @@ class App extends Component {
         document.querySelector('.loader').classList.remove('come')
       }
     })
+    const starsRef = firebas.storage()
+
+    // Get the download URL
+    setTimeout(() => {
+      starsRef.ref(this.state.user.userid).child(this.state.user.userid).getDownloadURL().then((url) => {
+        this.setState({imgURL: url})
+        console.log(url)
+        // Insert url into an <img> tag to "download"
+      })
+    }, 1000);
     // 
     // fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
     //   return res.json()
@@ -208,10 +220,29 @@ class App extends Component {
         console.log(err)
       })
   }
+  upload = (e) =>{
+    console.log(e.target.files[0])
+
+    firebas.storage().ref(this.state.user.userid).child(this.state.user.userid).put(e.target.files[0])
+        .then(snapshot => {
+              console.log(snapshot)
+            
+    });
+    const starsRef = firebas.storage()
+
+    // Get the download URL
+    starsRef.ref(this.state.user.userid).child('img').getDownloadURL().then((url) => {
+      this.setState({imgURL: url})
+      console.log(url)
+      // Insert url into an <img> tag to "download"
+    })
+    
+  }
  
   render() {
     return (
       <div className="App">
+      <input type="file" onChange={this.upload}/>
         <div className="top">
             <div className="items">
               <div className="img">
@@ -222,7 +253,7 @@ class App extends Component {
         </div>
       { this.state.page === 'home'
           ? <div>
-              <HomePage onSearch={this.onSearch} user={this.state.user}/>
+              <HomePage onSearch={this.onSearch} user={this.state.user} imgURL={this.state.imgURL}/>
             </div>
           : 
           (   this.state.page === 'admin'

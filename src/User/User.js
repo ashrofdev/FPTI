@@ -4,7 +4,7 @@ import './user.css'
 
 
 
-const User = ({user}) => {
+const User = ({user, imgURL}) => {
      const value = (item) =>{
         if (item === '1') {
             return 'COMPLETED'
@@ -25,8 +25,8 @@ const User = ({user}) => {
                     <p><span>Username:</span> {user.D}</p>
                     <p><span>User ID:</span> {user.E}</p>
                 </div>
-                <div>
-                    <img src={require('../img/default.png')}/>
+                <div className="pro-pic">
+                    <img src={imgURL}/>
                 </div>
                 <div>
                     <p><span>Reg date:</span> {user.regdate}</p>
