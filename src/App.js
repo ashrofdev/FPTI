@@ -15,7 +15,7 @@ class App extends Component {
   constructor() {
     super()
     this.state={
-      page: 'admin',
+      page: 'home',
       users: [],
       user: {},
       password: '123',
@@ -236,25 +236,36 @@ class App extends Component {
     document.querySelector('.nav .list').classList.remove('show')
     document.querySelector('.nav-btn').classList.remove('n-btn')
   }
-
+// 1000 000
  
   // initializing image upload function
   upload = (e) =>{
-    console.log(e.target.files[0])
-    const proPic = this.state.user.B
-    firebas.storage().ref(this.state.user.username).child(proPic).put(e.target.files[0])
-        .then(snapshot => {
-              console.log(snapshot)
-            
-    });
-    const starsRef = firebas.storage()
-    
-    // Getting the download URL
-    starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
-      this.setState({imgURL: url})
-      console.log(url)
+    console.log(e.target.files[0].size, '...........')
+    if (e.target.files[0].size < 1000000) {
+      const proPic = this.state.user.B
+      firebas.storage().ref(this.state.user.username).child(proPic).put(e.target.files[0])
+          .then(snapshot => {
+                console.log(snapshot)
+              
+      });
+      const starsRef = firebas.storage()
       
-    })
+      // Getting the download URL
+      setTimeout(() => {
+        starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
+          this.setState({imgURL: url})
+          console.log(url)
+          
+        })
+      }, 100);
+    } else {
+      document.querySelector('.alert').textContent="Failed: File larger than 1MB"
+      document.querySelector('.alert').classList.add('alert-fail')
+      setTimeout(() => {
+        document.querySelector('.alert').classList.remove('alert-fail')
+      }, 3000);
+      console.log(e.target.files[0].size, '....file too big.......')
+    }
     
   }
  
