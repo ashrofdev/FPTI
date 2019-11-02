@@ -1,8 +1,7 @@
-
-import './admin.css'
-
-
 import React, { Component } from 'react';
+import { firebaseDB } from '../Firebase'
+import './admin.css'
+import AddUser from '../AddUser/AddUser';
 
 class Admin extends Component {
     
@@ -16,8 +15,9 @@ class Admin extends Component {
             return 'PENDING'
         }
     }
+    
     render() {
-     const {onSearch, user, onSubmit, cPass, onPassChange, imgURL, upload} = this.props
+     const {onSearch, user, onSubmit, cPass, onPassChange, imgURL, upload, addUser} = this.props
         return (
             <div className="admin">
                 <div className="search">
@@ -106,6 +106,7 @@ class Admin extends Component {
                         <button className="change" onClick={onPassChange}>Change</button>
                     </div>
                 </div>
+                <AddUser addUser={addUser}/>
             </div>
            
         )

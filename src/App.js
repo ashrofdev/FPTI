@@ -4,7 +4,6 @@ import HomePage from './HomePage/HomePage';
 import Admin from './Admin/Admin'
 import NavBar from './LittleComponents/NavBar';
 import 'font-awesome/css/font-awesome.min.css'
-import Dropzone from 'react-dropzone'
 import './LittleComponents/LittleComponents'
 import './Firebase'
 import { firebaseDB, firebas } from './Firebase'
@@ -30,15 +29,12 @@ class App extends Component {
     
     // pulling database
     await firebaseDB.ref().once('value').then((snapshot)=>{
-      const users = []
       Object.entries(snapshot.val()).map(e => {
-        users.push(e[1])
+        this.state.users.push(e[1])
       })
       this.setState({
-        users: users,
-        length: users.length
+        length: this.state.users.length
       })
-      
     })
     
     
@@ -62,8 +58,8 @@ class App extends Component {
       setTimeout(() => {
         // search filtering
           this.state.users.forEach((user, i)=>{
-            console.log('user.B'.toLowerCase(), 'theresssss')
-            if (user.B.toLowerCase().includes(username.toLowerCase())) {
+            console.log(this.state.users, 'theresssss')
+            if (user.D.includes(username)) {
               this.setState({user: user})
               this.setState({userNum: i})
               if (this.state.user.B !== undefined) {
@@ -263,6 +259,34 @@ class App extends Component {
     }
     
   }
+
+  // initializing register function
+  addUser = async () => {
+    await firebaseDB.ref().child(this.state.length).set({
+        A: document.querySelector('.date').value,
+        B: document.querySelector('.name').value,
+        C: document.querySelector('.phone').value,
+        D: document.querySelector('.userN').value,
+        E: document.querySelector('.userid').value,
+        F: '0',
+        G: '0',
+        H: '0',
+        I: '0',
+        J: '0',
+        K: '0',
+        L: '0'
+    }).then(()=>{
+      firebaseDB.ref().once('value').then((snapshot)=>{
+        const users = []
+        Object.entries(snapshot.val()).map(e => users.push(e[1]))
+        this.setState({
+          users: users,
+          length: users.length
+        })
+        
+      })
+    })
+  }
  
   render() {
     return (
@@ -285,7 +309,7 @@ class App extends Component {
             ?  <div>
                   <Admin onSearch={this.onSearch} user={this.state.user}
                   cPass={this.cPass}  imgURL={this.state.imgURL}
-                  upload={this.upload}
+                  upload={this.upload} length={this.state.length} addUser={this.addUser}
                   onSubmit={this.onSubmit} onPassChange={this.onPassChange}/>
                 </div>
             : {}
@@ -296,7 +320,7 @@ class App extends Component {
                 <input type="password" className="password" placeholder="Enter password"/>
             </div>
             <div className="loader">
-              <img src= {require('./img/1.gif')}/>
+              <img alt="loader" src= {require('./img/2.gif')}/>
             </div>
             <p className="alert">Update successful</p>
       </div>

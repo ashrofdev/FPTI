@@ -1,0 +1,40 @@
+.add-user {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    transform: translate(-100%,-100%);
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    box-shadow: 1px 1px 5px black;
+    position: relative;
+    width: 45rem;
+    margin: auto;
+}
+.add-user p {
+    font-size: 3rem;
+}
+.add-user .quit {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    background-color: none;
+    border: none;
+    box-shadow: none;
+    font-weight: 100;
+    padding: 0;
+    font-size: 5rem;
+    transform: scaleY(.8);
+}
+.add-user .quit:hover {
+    color: red;
+}
+.add-user input {
+    height: 4rem;
+    padding: .5rem;
+    margin: 1rem 0;
+    outline: none;
+    font-size: 1.5rem;
+}
