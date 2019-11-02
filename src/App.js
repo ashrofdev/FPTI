@@ -30,9 +30,13 @@ class App extends Component {
     
     // pulling database
     await firebaseDB.ref().once('value').then((snapshot)=>{
-      Object.entries(snapshot.val()).map(e => {
-        this.state.users.push(e[1])
-      })
+      // Object.entries(snapshot.val()).map(e => {
+      //   this.state.users.push(e[1])
+      // })
+      snapshot.val().forEach(el => {
+        console.log(el, 111111)
+        this.state.users.push(el)
+      });
       this.setState({
         length: this.state.users.length
       })
