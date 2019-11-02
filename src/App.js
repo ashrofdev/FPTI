@@ -26,6 +26,7 @@ class App extends Component {
 
   componentDidMount(){
     
+    // pulling database
     firebaseDB.ref().once('value').then((snapshot)=>{
       const users = []
       snapshot.val().forEach(e => {
@@ -43,9 +44,8 @@ class App extends Component {
     })
   }
 
+  // initializing the search function
   onSearch = () => {  
-          console.log(this.state.users)
-
     document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
     document.querySelector('.top').classList.add('n-top')
@@ -55,7 +55,7 @@ class App extends Component {
     const username = document.querySelector('.username').value
     if (this.state.users[0] !== undefined) {
       setTimeout(() => {
-        
+        // search filtering
           this.state.users.forEach((user, i)=>{
             if (user.B.toLowerCase().includes(username.toLowerCase())) {
               this.setState({user: user})
@@ -89,19 +89,19 @@ class App extends Component {
     
     const starsRef = firebas.storage()
 
-    // Get the download URL
+    // Get the download URL for profile picture
     setTimeout(() => {
       const proPic = this.state.user.B
 
       starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
         this.setState({imgURL: url})
         console.log(url)
-        // Insert url into an <img> tag to "download"
+        
       }).catch((err)=>{
         starsRef.ref(this.state.user.username).child('default').getDownloadURL().then((url) => {
           this.setState({imgURL: url})
           console.log(url)
-          // Insert url into an <img> tag to "download"
+          
         })
       })
     }, 2000);
@@ -128,18 +128,18 @@ class App extends Component {
     //   console.log(document.querySelector('.user').textContent)
     // })
   }
-// A: "43725"
-// B: "KAREEM AMOD TITILOPE"
-// C: "8062105312"
-// D: "AMOD82"
-// E: "NG999638"
-// F: "0"
-// G: "0"
-// H: "0"
-// I: "0"
-// J: "0"
-// K: "0"
-// L: "0"
+  // A: "43725"
+  // B: "KAREEM AMOD TITILOPE"
+  // C: "8062105312"
+  // D: "AMOD82"
+  // E: "NG999638"
+  // F: "0"
+  // G: "0"
+  // H: "0"
+  // I: "0"
+  // J: "0"
+  // K: "0"
+  // L: "0"
 
 
   onSubmit = () => {
@@ -218,6 +218,7 @@ class App extends Component {
     }
   }
 
+  // Handling routing
   onPageChange = (route) => {
     if (route === 'admin') {
       if (this.state.page !== 'admin'){
@@ -236,24 +237,8 @@ class App extends Component {
     document.querySelector('.nav-btn').classList.remove('n-btn')
   }
 
-  drop = (file) => {
-    console.log(file)
-    fetch('https://fpt-server.herokuapp.com/files', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            file: file,
-        })
-      }).then((res)=>{
-        console.log(res)
-        return res.json()
-        .then((data)=>{
-          console.log(data)
-        })
-      }).catch((err)=>{
-        console.log(err)
-      })
-  }
+ 
+  // initializing image upload function
   upload = (e) =>{
     console.log(e.target.files[0])
     const proPic = this.state.user.B
@@ -264,11 +249,11 @@ class App extends Component {
     });
     const starsRef = firebas.storage()
     
-    // Get the download URL
-    starsRef.ref(this.state.user.username).child(test).getDownloadURL().then((url) => {
+    // Getting the download URL
+    starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
       this.setState({imgURL: url})
       console.log(url)
-      // Insert url into an <img> tag to "download"
+      
     })
     
   }

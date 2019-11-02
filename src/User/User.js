@@ -5,6 +5,7 @@ import './user.css'
 
 
 const User = ({user, imgURL, upload}) => {
+    // editing values from database
      const value = (item) =>{
         if (item === '1') {
             return 'COMPLETED'

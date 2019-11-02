@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 
 class Admin extends Component {
     
+    // editing values from database
     value = (item) =>{
         if (item === '1' || item === 'COMPLETED') {
             return 'COMPLETED'
