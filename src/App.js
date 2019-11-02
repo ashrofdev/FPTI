@@ -43,7 +43,9 @@ class App extends Component {
     })
   }
 
-  onSearch = () => {
+  onSearch = () => {  
+          console.log(this.state.users)
+
     document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
     document.querySelector('.top').classList.add('n-top')
@@ -51,26 +53,51 @@ class App extends Component {
       document.querySelector('h1').style="display: none"
     }
     const username = document.querySelector('.username').value
-    this.state.users.forEach((user, i)=>{
-      if (user.B.toLowerCase().includes(username.toLowerCase())) {
-        this.setState({user: user})
-        this.setState({userNum: i})
-        console.log(user)
-        console.log(this.state.user)
-        document.querySelector('.user').classList.add('u-totop')
-        document.querySelector('.loader').classList.remove('come')
-      }
-    })
+    if (this.state.users[0] !== undefined) {
+      setTimeout(() => {
+        
+          this.state.users.forEach((user, i)=>{
+            if (user.B.toLowerCase().includes(username.toLowerCase())) {
+              this.setState({user: user})
+              this.setState({userNum: i})
+              if (this.state.user.B !== undefined) {
+                console.log(this.state.user)
+                document.querySelector('.user').classList.add('u-totop')
+                document.querySelector('.loader').classList.remove('come')
+              }else {
+                document.querySelector('.loader').classList.remove('come')
+                document.querySelector('.alert').textContent="User not found"
+                document.querySelector('.alert').classList.add('alert-fail')
+                setTimeout(() => {
+                  document.querySelector('.alert').classList.remove('alert-fail')
+                }, 3000);
+              }
+            }
+          })
+        
+      }, 100);
+      
+    }else {
+      document.querySelector('.loader').classList.remove('come')
+      document.querySelector('.alert').textContent="Failed: No internet connection"
+      document.querySelector('.alert').classList.add('alert-fail')
+      setTimeout(() => {
+        document.querySelector('.alert').classList.remove('alert-fail')
+      }, 3000);
+      console.log(this.state.user.B, 'no internet access')
+    }
+    
     const starsRef = firebas.storage()
 
     // Get the download URL
     setTimeout(() => {
-      starsRef.ref(this.state.user.userid).child(this.state.user.userid).getDownloadURL().then((url) => {
+      const test = this.state.user.B
+      starsRef.ref(this.state.user.username).child(test).getDownloadURL().then((url) => {
         this.setState({imgURL: url})
         console.log(url)
         // Insert url into an <img> tag to "download"
       })
-    }, 1000);
+    }, 2000);
     // 
     // fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
     //   return res.json()
@@ -222,16 +249,16 @@ class App extends Component {
   }
   upload = (e) =>{
     console.log(e.target.files[0])
-
-    firebas.storage().ref(this.state.user.userid).child(this.state.user.userid).put(e.target.files[0])
+    const test = this.state.user.B
+    firebas.storage().ref(this.state.user.username).child('default').put(e.target.files[0])
         .then(snapshot => {
               console.log(snapshot)
             
     });
     const starsRef = firebas.storage()
-
+    
     // Get the download URL
-    starsRef.ref(this.state.user.userid).child('img').getDownloadURL().then((url) => {
+    starsRef.ref(this.state.user.username).child(test).getDownloadURL().then((url) => {
       this.setState({imgURL: url})
       console.log(url)
       // Insert url into an <img> tag to "download"
