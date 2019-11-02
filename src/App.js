@@ -58,8 +58,9 @@ class App extends Component {
       setTimeout(() => {
         // search filtering
           this.state.users.forEach((user, i)=>{
-            console.log(this.state.users, 'theresssss')
-            if (user.D.includes(username)) {
+            console.log(this.state.users, 'the.............resssss')
+            console.log(user.D, username)
+            if (user.D === username.toUpperCase()) {
               this.setState({user: user})
               this.setState({userNum: i})
               if (this.state.user.B !== undefined) {

@@ -5,6 +5,10 @@ import AddUser from '../AddUser/AddUser';
 
 class Admin extends Component {
     
+    state = {
+        form: false
+    }
+
     // editing values from database
     value = (item) =>{
         if (item === '1' || item === 'COMPLETED') {
@@ -15,9 +19,15 @@ class Admin extends Component {
             return 'PENDING'
         }
     }
+    regForm = () => document.querySelector('.add-user').classList.add('pop')
     
+    
+    
+ 
     render() {
-     const {onSearch, user, onSubmit, cPass, onPassChange, imgURL, upload, addUser} = this.props
+
+    
+     const {onSearch, user, onSubmit, cPass, onPassChange, imgURL, upload } = this.props
         return (
             <div className="admin">
                 <div className="search">
@@ -98,7 +108,10 @@ class Admin extends Component {
                     <button onClick={onSubmit} className="submit">Submit Changes</button>
                 </div>
                 <div className="pass-sec">
-                    <button className="change-pass" onClick={cPass}>Change password</button>
+                    <div style={{display: "flex"}}>
+                        <button className="change-pass" onClick={cPass}>Change password</button>
+                        <button onClick={this.regForm}>REGISTER USER</button>
+                    </div>
                     <div className="p-change">
                         <input className="old" type="password" placeholder="Old password"/>
                         <input className="new" type="password" placeholder="New password"/>
@@ -106,7 +119,9 @@ class Admin extends Component {
                         <button className="change" onClick={onPassChange}>Change</button>
                     </div>
                 </div>
-                <AddUser addUser={addUser}/>
+                <div>
+                    <AddUser addUser={this.props.addUser}/>
+                </div>
             </div>
            
         )

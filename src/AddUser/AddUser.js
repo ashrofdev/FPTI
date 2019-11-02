@@ -1,10 +1,8 @@
 import React from 'react';
 import './add.css'
 
-const AddUser = ({addUser}) => {
-    const removePop = () => {
-        document.querySelector('.add-user').remove()
-    }
+const AddUser = ({addUser, pop}) => {
+    pop = () => document.querySelector('.add-user').classList.remove('pop')
     return (
         <div className="add-user">
             <p>Enter user details below</p>
@@ -13,7 +11,7 @@ const AddUser = ({addUser}) => {
             <input className="userid" placeholder="User ID"/>
             <input className="phone" type='number' placeholder="Pnone no"/>
             <input className="date" type="date" placeholder="Date"/>
-            <button onClick={removePop} className="quit">X</button>
+            <button onClick={pop} className="quit">X</button>
             <button onClick={addUser} className="add">ADD USER</button>
         </div>
     );
