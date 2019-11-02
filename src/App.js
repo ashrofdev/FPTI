@@ -21,7 +21,8 @@ class App extends Component {
       password: '123',
       userNum: 0,
       imgURL: '',
-      length: 0
+      length: 0,
+      isValid: false
     }
   }
 
@@ -57,27 +58,33 @@ class App extends Component {
     if (this.state.users[0] !== undefined) {
       setTimeout(() => {
         // search filtering
-          this.state.users.forEach((user, i)=>{
+        const isIn = () => {
+          for (let i = 0; i < this.state.users.length; i++) {
             console.log(this.state.users, 'the.............resssss')
-            console.log(user.D, username)
-            if (user.D === username.toUpperCase()) {
-              this.setState({user: user})
-              this.setState({userNum: i})
-                console.log(this.state.user)
-                document.querySelector('.user').classList.add('u-totop')
-                document.querySelector('.loader').classList.remove('come')
+            console.log(this.state.users[i].D, username)
+              if (this.state.users[i].D === username.toUpperCase()) {
+                this.setState({user: this.state.users[i]})
+                this.setState({userNum: i})
+                  console.log(this.state.user)
+                  document.querySelector('.user').classList.add('u-totop')
+                  document.querySelector('.loader').classList.remove('come')
+                return true
+              }
               
-            }else {
-              document.querySelector('.loader').classList.remove('come')
-              document.querySelector('.alert').textContent="User not found"
-              document.querySelector('.alert').classList.add('alert-fail')
-              setTimeout(() => {
+          }
+        }
+          if (!isIn()){
+                document.querySelector('.loader').classList.remove('come')
+                document.querySelector('.alert').textContent="User not found"
+                document.querySelector('.alert').classList.add('alert-fail')
+                setTimeout(() => {
+                  document.querySelector('.alert').classList.remove('alert-fail')
+                }, 3000);
+              } else {
                 document.querySelector('.alert').classList.remove('alert-fail')
-              }, 3000);
-            }
-          })
-        
+              }
       }, 800);
+      
       
     }else {
       document.querySelector('.loader').classList.remove('come')
