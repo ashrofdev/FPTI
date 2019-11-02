@@ -82,8 +82,9 @@
 }
 .pro-pic {
     margin: auto;
-    position: relative;
     margin-bottom: 3rem;
+    width: 11rem;
+    position: relative;
 }
 .pro-pic img {
     width: 11rem;
