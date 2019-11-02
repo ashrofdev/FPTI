@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b4b5dc630751eb3f0d394f065b4e22f9",
+    "revision": "ecd4233c7da6e6343eceee4b07b20dcd",
     "url": "/FPTI/index.html"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/FPTI/static/css/2.366af2a3.chunk.css"
   },
   {
-    "revision": "fc0214e8183c55721d12",
-    "url": "/FPTI/static/css/main.54978d0f.chunk.css"
+    "revision": "84cb9457491183b31b46",
+    "url": "/FPTI/static/css/main.42d992b8.chunk.css"
   },
   {
     "revision": "a1a81a4a1f5f50383f73",
     "url": "/FPTI/static/js/2.5abf3de5.chunk.js"
   },
   {
-    "revision": "fc0214e8183c55721d12",
+    "revision": "84cb9457491183b31b46",
     "url": "/FPTI/static/js/main.5189e3d6.chunk.js"
   },
   {
