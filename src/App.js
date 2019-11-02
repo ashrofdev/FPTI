@@ -8,6 +8,7 @@ import Dropzone from 'react-dropzone'
 import './LittleComponents/LittleComponents'
 import './Firebase'
 import { firebaseDB, firebas } from './Firebase'
+import { async } from 'q';
 
 
 class App extends Component {
@@ -20,7 +21,8 @@ class App extends Component {
       user: {},
       password: '123',
       userNum: 0,
-      imgURL: ''
+      imgURL: '',
+      length: 0
     }
   }
 
@@ -32,20 +34,11 @@ class App extends Component {
       Object.entries(snapshot.val()).map(e => {
         users.push(e[1])
       })
-      this.setState({users: users})
-      firebaseDB.ref().child(users.length+1).set({
-        A: 'one',
-        B: 'one',
-        C: 'one',
-        D: 'four',
-        E: 'five',
-        F: 'three',
-        G: 'four',
-        H: 'five',
-        I: 'three',
-        J: 'four',
-        K: 'five'
+      this.setState({
+        users: users,
+        length: users.length
       })
+      
     })
     
     
@@ -155,7 +148,7 @@ class App extends Component {
   // L: "0"
 
 
-  onSubmit = () => {
+  onSubmit = async () => {
     console.log(this.state.userNum)
     const el = {
       id: this.state.user.userid,
@@ -167,7 +160,7 @@ class App extends Component {
       m6: document.querySelector('.m6').value,
       m7: document.querySelector('.m7').value
     }
-    firebaseDB.ref().child(this.state.userNum).update({
+    await firebaseDB.ref().child(this.state.userNum).update({
       'F': el.m1,
       'G': el.m2,
       'H': el.m3,
@@ -175,15 +168,6 @@ class App extends Component {
       "J": el.m5,
       "K": el.m6,
       "L": el.m7
-    })
-    document.querySelector('.loader').classList.add('come')
-    console.log(this.state.user.userid)
-    fetch('https://fpt-server.herokuapp.com/submit-change', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        
-      })
     }).then((e)=>{
       console.log(3)
       document.querySelector('.loader').classList.remove('come')

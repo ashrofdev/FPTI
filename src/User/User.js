@@ -6,10 +6,10 @@ import './user.css'
 
 const User = ({user, imgURL, upload}) => {
     // editing values from database
-     const value = (item) =>{
-        if (item === '1') {
+    const value = (item) =>{
+        if (item === '1' || item === 'COMPLETED') {
             return 'COMPLETED'
-        } else if (item === '0') {
+        } else if (item === '0' || item === 'NULL') {
             return 'NULL'
         } else {
             return 'PENDING'
@@ -27,7 +27,7 @@ const User = ({user, imgURL, upload}) => {
                     <p><span>User ID:</span> {user.E}</p>
                 </div>
                 <div className="pro-pic">
-                    <img src={imgURL}/>
+                    <img alt="Loading img" src={imgURL}/>
                     <label> <i className="fa fa-camera"></i><input placeholder="Upload" type="file" className="upload" onChange={upload}/></label>
                         
                 </div>

@@ -31,7 +31,7 @@ class Admin extends Component {
                         <h3 className="full-name">{user.B}</h3>
                         <p><span>User ID:</span> {user.E}</p>
                         <div className="pro-pic">
-                            <img src={imgURL}/>
+                            <img alt="Loading img" src={imgURL}/>
                         <label> <i className="fa fa-camera"></i>
                         <input placeholder="Upload" type="file" className="upload" onChange={upload}/>
                         </label>

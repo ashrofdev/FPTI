@@ -31,3 +31,19 @@ firebaseDB.ref().once('value').then((snapshot) => {
 
 export const firebas = firebase
 
+
+// add nwe user
+
+// firebaseDB.ref().child(users.length+1).set({
+//     A: 'one',
+//     B: 'one',
+//     C: 'one',
+//     D: 'four',
+//     E: 'five',
+//     F: 'three',
+//     G: 'four',
+//     H: 'five',
+//     I: 'three',
+//     J: 'four',
+//     K: 'five'
+// })
