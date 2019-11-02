@@ -49,6 +49,9 @@
 
 @media only screen and (max-width: 500px) {
     .add-user {
-        width: 100%;
+        width: 80vw;
+        top: 0;
+        left: 0;
+        transform: translate(0,10%);
     }
 }
