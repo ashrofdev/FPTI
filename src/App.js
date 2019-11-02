@@ -91,11 +91,18 @@ class App extends Component {
 
     // Get the download URL
     setTimeout(() => {
-      const test = this.state.user.B
-      starsRef.ref(this.state.user.username).child(test).getDownloadURL().then((url) => {
+      const proPic = this.state.user.B
+
+      starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
         this.setState({imgURL: url})
         console.log(url)
         // Insert url into an <img> tag to "download"
+      }).catch((err)=>{
+        starsRef.ref(this.state.user.username).child('default').getDownloadURL().then((url) => {
+          this.setState({imgURL: url})
+          console.log(url)
+          // Insert url into an <img> tag to "download"
+        })
       })
     }, 2000);
     // 
@@ -249,8 +256,8 @@ class App extends Component {
   }
   upload = (e) =>{
     console.log(e.target.files[0])
-    const test = this.state.user.B
-    firebas.storage().ref(this.state.user.username).child('default').put(e.target.files[0])
+    const proPic = this.state.user.B
+    firebas.storage().ref(this.state.user.username).child(proPic).put(e.target.files[0])
         .then(snapshot => {
               console.log(snapshot)
             
@@ -269,7 +276,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <input type="file" onChange={this.upload}/>
         <div className="top">
             <div className="items">
               <div className="img">
@@ -280,7 +286,8 @@ class App extends Component {
         </div>
       { this.state.page === 'home'
           ? <div>
-              <HomePage onSearch={this.onSearch} user={this.state.user} imgURL={this.state.imgURL}/>
+              <HomePage onSearch={this.onSearch} user={this.state.user}
+               imgURL={this.state.imgURL} upload={this.upload}/>
             </div>
           : 
           (   this.state.page === 'admin'

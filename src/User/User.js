@@ -4,7 +4,7 @@ import './user.css'
 
 
 
-const User = ({user, imgURL}) => {
+const User = ({user, imgURL, upload}) => {
      const value = (item) =>{
         if (item === '1') {
             return 'COMPLETED'
@@ -27,6 +27,8 @@ const User = ({user, imgURL}) => {
                 </div>
                 <div className="pro-pic">
                     <img src={imgURL}/>
+                    <label> <i className="fa fa-camera"></i><input placeholder="Upload" type="file" className="upload" onChange={upload}/></label>
+                        
                 </div>
                 <div>
                     <p><span>Reg date:</span> {user.regdate}</p>

@@ -82,6 +82,8 @@
 }
 .pro-pic {
     margin: auto;
+    position: relative;
+    margin-bottom: 3rem;
 }
 .pro-pic img {
     width: 11rem;
@@ -89,6 +91,21 @@
     border-radius: 50%;
     transform: scale(1.5);
     margin: auto;
+    border: 1px solid rgb(235, 234, 234);
+}
+label {
+    position: absolute;
+    bottom: -2.5rem;
+    cursor: pointer;
+    color: rgb(5, 5, 5);
+    border: 1px solid rgb(126, 124, 124);
+    padding: .5rem;
+    border-radius: 10rem;
+    right: -15%;
+    font-size: 2rem;
+}
+.upload { 
+    display: none;
 }
 
 @media only screen and (max-width: 700px) {
