@@ -29,11 +29,14 @@ class App extends Component {
     // pulling database
     firebaseDB.ref().once('value').then((snapshot)=>{
       const users = []
-      snapshot.val().forEach(e => {
-          users.push(e)
-      });
+      Object.entries(snapshot.val()).map(e => {
+        users.push(e[1])
+      })
+      console.log(users)
+      // snapshot.val().forEach(e => {
+      //     users.push(e)
+      // });
       this.setState({users: users})
-      console.log(this.state.users)
       
     })
     
@@ -57,6 +60,7 @@ class App extends Component {
       setTimeout(() => {
         // search filtering
           this.state.users.forEach((user, i)=>{
+            console.log(user.B.toLowerCase(), 'theresssss')
             if (user.B.toLowerCase().includes(username.toLowerCase())) {
               this.setState({user: user})
               this.setState({userNum: i})
@@ -75,7 +79,7 @@ class App extends Component {
             }
           })
         
-      }, 100);
+      }, 800);
       
     }else {
       document.querySelector('.loader').classList.remove('come')
@@ -239,25 +243,23 @@ class App extends Component {
 // 1000 000
  
   // initializing image upload function
-  upload = (e) =>{
+  upload = async (e)  =>{
     console.log(e.target.files[0].size, '...........')
     if (e.target.files[0].size < 1000000) {
       const proPic = this.state.user.B
-      firebas.storage().ref(this.state.user.username).child(proPic).put(e.target.files[0])
+      await firebas.storage().ref(this.state.user.username).child(proPic).put(e.target.files[0])
           .then(snapshot => {
                 console.log(snapshot)
               
       });
-      const starsRef = firebas.storage()
       
       // Getting the download URL
-      setTimeout(() => {
+        const starsRef = firebas.storage()
         starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
           this.setState({imgURL: url})
           console.log(url)
           
         })
-      }, 100);
     } else {
       document.querySelector('.alert').textContent="Failed: File larger than 1MB"
       document.querySelector('.alert').classList.add('alert-fail')

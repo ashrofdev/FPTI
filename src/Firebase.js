@@ -19,4 +19,27 @@ firebase.initializeApp(firebaseConfig);
 
 export const firebaseDB = firebase.database()
 
+const users = []
+firebaseDB.ref().once('value').then((snapshot) => {
+    Object.entries(snapshot.val()).map(e => {
+        users.push(e[1])
+    })
+})
+const length = users.length
+console.log(length)
+
+
 export const firebas = firebase
+firebaseDB.ref().child('new').push({
+    A: 'one',
+    B: 'two',
+    C: 'three',
+    D: 'four',
+    E: 'five',
+    F: 'three',
+    G: 'four',
+    H: 'five',
+    I: 'three',
+    J: 'four',
+    K: 'five'
+})
