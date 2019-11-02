@@ -24,21 +24,30 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     
     // pulling database
-    firebaseDB.ref().once('value').then((snapshot)=>{
+    await firebaseDB.ref().once('value').then((snapshot)=>{
       const users = []
       Object.entries(snapshot.val()).map(e => {
         users.push(e[1])
       })
-      console.log(users)
-      // snapshot.val().forEach(e => {
-      //     users.push(e)
-      // });
       this.setState({users: users})
-      
+      firebaseDB.ref().child(users.length+1).set({
+        A: 'one',
+        B: 'one',
+        C: 'one',
+        D: 'four',
+        E: 'five',
+        F: 'three',
+        G: 'four',
+        H: 'five',
+        I: 'three',
+        J: 'four',
+        K: 'five'
+      })
     })
+    
     
     window.addEventListener('keypress',(e)=>{
       if (e.key==='Enter') {
@@ -60,7 +69,7 @@ class App extends Component {
       setTimeout(() => {
         // search filtering
           this.state.users.forEach((user, i)=>{
-            console.log(user.B.toLowerCase(), 'theresssss')
+            console.log('user.B'.toLowerCase(), 'theresssss')
             if (user.B.toLowerCase().includes(username.toLowerCase())) {
               this.setState({user: user})
               this.setState({userNum: i})
