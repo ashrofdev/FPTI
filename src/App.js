@@ -5,7 +5,7 @@ import Admin from './Admin/Admin'
 import NavBar from './LittleComponents/NavBar';
 import 'font-awesome/css/font-awesome.min.css'
 import Dropzone from 'react-dropzone'
-import { ScrollUp } from './LittleComponents/LittleComponents'
+import './LittleComponents/LittleComponents'
 import './Firebase'
 import { firebaseDB, firebas } from './Firebase'
 
@@ -15,7 +15,7 @@ class App extends Component {
   constructor() {
     super()
     this.state={
-      page: 'home',
+      page: 'admin',
       users: [],
       user: {},
       password: '123',
@@ -278,8 +278,9 @@ class App extends Component {
           (   this.state.page === 'admin'
             ?  <div>
                   <Admin onSearch={this.onSearch} user={this.state.user}
-                  cPass={this.cPass} onSubmit={this.onSubmit} 
-                  onPassChange={this.onPassChange}/>
+                  cPass={this.cPass}  imgURL={this.state.imgURL}
+                  upload={this.upload}
+                  onSubmit={this.onSubmit} onPassChange={this.onPassChange}/>
                 </div>
             : {}
             ) 

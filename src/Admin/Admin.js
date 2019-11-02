@@ -17,7 +17,7 @@ class Admin extends Component {
         }
     }
     render() {
-     const {onSearch, user, onSubmit, cPass, onPassChange} = this.props
+     const {onSearch, user, onSubmit, cPass, onPassChange, imgURL, upload} = this.props
         return (
             <div className="admin">
                 <div className="search">
@@ -27,9 +27,15 @@ class Admin extends Component {
                     </button>
                 </div>
                 <div className="user">
-                    <div className="head">
-                        <h2 className="full-name">{user.B}</h2>
+                    <div className="headd">
+                        <h3 className="full-name">{user.B}</h3>
                         <p><span>User ID:</span> {user.E}</p>
+                        <div className="pro-pic">
+                            <img src={imgURL}/>
+                        <label> <i className="fa fa-camera"></i>
+                        <input placeholder="Upload" type="file" className="upload" onChange={upload}/>
+                        </label>
+                </div>
                     </div>
                     <div className="b-details">
                         <h2>Edit balance details</h2>

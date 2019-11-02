@@ -4,8 +4,10 @@
     background-image: none;
     margin-top: -0;
 }
-.admin h2 {
-    color: white;
+.admin .headd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .admin .table {
     display: flex;
