@@ -63,18 +63,17 @@ class App extends Component {
             if (user.D === username.toUpperCase()) {
               this.setState({user: user})
               this.setState({userNum: i})
-              if (this.state.user.B !== undefined) {
                 console.log(this.state.user)
                 document.querySelector('.user').classList.add('u-totop')
                 document.querySelector('.loader').classList.remove('come')
-              }else {
-                document.querySelector('.loader').classList.remove('come')
-                document.querySelector('.alert').textContent="User not found"
-                document.querySelector('.alert').classList.add('alert-fail')
-                setTimeout(() => {
-                  document.querySelector('.alert').classList.remove('alert-fail')
-                }, 3000);
-              }
+              
+            }else {
+              document.querySelector('.loader').classList.remove('come')
+              document.querySelector('.alert').textContent="User not found"
+              document.querySelector('.alert').classList.add('alert-fail')
+              setTimeout(() => {
+                document.querySelector('.alert').classList.remove('alert-fail')
+              }, 3000);
             }
           })
         
