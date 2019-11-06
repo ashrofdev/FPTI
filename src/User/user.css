@@ -85,6 +85,20 @@
     margin-bottom: 3rem;
     width: 11rem;
     position: relative;
+    z-index: -1;
+}
+.pro-pic .loaderp {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10000;
+    width: 40%;
+    height: auto;
+}
+.pro-pic .load {
+    display: block;
 }
 .pro-pic img {
     width: 11rem;
@@ -94,7 +108,7 @@
     margin: auto;
     border: 1px solid rgb(235, 234, 234);
 }
-label {
+/* label {
     position: absolute;
     bottom: -2.5rem;
     cursor: pointer;
@@ -104,7 +118,8 @@ label {
     border-radius: 10rem;
     right: -15%;
     font-size: 2rem;
-}
+    z-index: 1000;
+} */
 .upload { 
     display: none;
 }

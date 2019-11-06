@@ -27,8 +27,9 @@ const User = ({user, imgURL}) => {
                     <p><span>User ID:</span> {user.E}</p>
                 </div>
                 <div className="pro-pic">
-                    <img alt="Loading img" src={imgURL}/>                        
-                </div>
+                    <img alt="Loading img" src={imgURL}/>        
+                    <img alt="loader" className="loaderp" src={require('../img/4.gif')}/>               
+                </div> 
                 <div>
                     <p><span>Reg date:</span> {user.regdate}</p>
                     <p><span>Phone:</span> {user.C}</p>

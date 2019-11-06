@@ -30,6 +30,4 @@ firebaseDB.ref().once('value').then((snapshot) => {
 export const firebas = firebase
 
 
-// add nwe user
-
 

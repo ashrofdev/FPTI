@@ -26,22 +26,21 @@ class App extends Component {
     }
   }
 
-  async componentDidMount(){
+  componentDidMount(){
     
     // pulling database
-    await firebaseDB.ref().once('value').then((snapshot)=>{
+    firebaseDB.ref().once('value').then((snapshot)=>{
       // Object.entries(snapshot.val()).map(e => {
       //   this.state.users.push(e[1])
       // })
       snapshot.val().forEach(el => {
-        console.log(el, 111111)
         this.state.users.push(el)
       });
+      console.log(this.state.users)
       this.setState({
         length: this.state.users.length
       })
     })
-    
     
     window.addEventListener('keypress',(e)=>{
       if (e.key==='Enter') {
@@ -55,21 +54,16 @@ class App extends Component {
     document.querySelector('.loader').classList.add('come')
     document.querySelector('.search').classList.add('to-top')
     document.querySelector('.top').classList.add('n-top')
-    if (this.state.page === 'home') {
-      document.querySelector('h1').style="display: none"
-    }
+    document.querySelector('.loaderp').classList.add('load')
     const username = document.querySelector('.username').value
     if (this.state.users[0] !== undefined) {
       setTimeout(() => {
         // search filtering
-        const isIn = () => {
+        const isInDatabase = () => {
           for (let i = 0; i < this.state.users.length; i++) {
-            console.log(this.state.users, 'the.............resssss')
-            console.log(this.state.users[i].D, username)
               if (this.state.users[i].D === username.toUpperCase()) {
                 this.setState({user: this.state.users[i]})
                 this.setState({userNum: i})
-                  console.log(this.state.user)
                   document.querySelector('.user').classList.add('u-totop')
                   document.querySelector('.loader').classList.remove('come')
                 return true
@@ -77,7 +71,7 @@ class App extends Component {
               
           }
         }
-          if (!isIn()){
+          if (!isInDatabase()){
                 document.querySelector('.loader').classList.remove('come')
                 document.querySelector('.alert').textContent="User not found"
                 document.querySelector('.alert').classList.add('alert-fail')
@@ -85,7 +79,7 @@ class App extends Component {
                   document.querySelector('.alert').classList.remove('alert-fail')
                 }, 3000);
               } else {
-                document.querySelector('.alert').classList.remove('alert-fail')
+                document.querySelector('.loaderp').classList.remove('load')
               }
       }, 800);
       
@@ -102,57 +96,30 @@ class App extends Component {
     
     const starsRef = firebas.storage()
 
-    // Get the download URL for profile picture
-    setTimeout(() => {
+    // Getting the URL for profile picture
+    setTimeout( async ()  => {
+      document.querySelector('.loaderp').classList.add('load')
       const proPic = this.state.user.B
 
-      starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
+      await starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
         this.setState({imgURL: url})
+        setTimeout(() => {
+          document.querySelector('.loaderp').classList.remove('load')
+        }, 1000);
         console.log(url)
         
       }).catch((err)=>{
         starsRef.ref(this.state.user.username).child('default').getDownloadURL().then((url) => {
           this.setState({imgURL: url})
           console.log(url)
+          document.querySelector('.loaderp').classList.remove('load')
           
         })
       })
     }, 2000);
-    // 
-    // fetch('https://fpt-server.herokuapp.com/users').then((res)=>{
-    //   return res.json()
-    // }).then(data=>{
-    //   console.log(data) 
-    //   data.forEach(user => {
-    //     if (user.username.toLowerCase().includes(username.toLowerCase())) {
-    //       this.setState({user: user})
-    //       console.log(this.state.user) 
-    //       document.querySelector('.user').classList.addd('u-totop')
-    //     } 
-    //     document.querySelector('.loader').classList.remove('come')
-    //   });
-    // }).catch(()=>{
-    //   document.querySelector('.alert').textContent="Network error"
-    //   document.querySelector('.alert').classList.add('alert-fail')
-    //   setTimeout(() => {
-    //     document.querySelector('.alert').classList.remove('alert-fail')
-    //   }, 3000);
-    //   document.querySelector('.loader').classList.remove('come')
-    //   console.log(document.querySelector('.user').textContent)
-    // })
+    
   }
-  // A: "43725"
-  // B: "KAREEM AMOD TITILOPE"
-  // C: "8062105312"
-  // D: "AMOD82"
-  // E: "NG999638"
-  // F: "0"
-  // G: "0"
-  // H: "0"
-  // I: "0"
-  // J: "0"
-  // K: "0"
-  // L: "0"
+
 
 
   onSubmit = async () => {
@@ -244,6 +211,7 @@ class App extends Component {
  
   // initializing image upload function
   upload = async (e)  =>{
+    document.querySelector('.loaderp').classList.add('load')
     console.log(e.target.files[0].size, '...........')
     if (e.target.files[0].size < 1000000) {
       const proPic = this.state.user.B
@@ -258,9 +226,11 @@ class App extends Component {
         starsRef.ref(this.state.user.username).child(proPic).getDownloadURL().then((url) => {
           this.setState({imgURL: url})
           console.log(url)
+          document.querySelector('.loaderp').style="opacity: 0"
           
         })
     } else {
+      document.querySelector('.loaderp').classList.remove('load')
       document.querySelector('.alert').textContent="Failed: File larger than 1MB"
       document.querySelector('.alert').classList.add('alert-fail')
       setTimeout(() => {
@@ -277,7 +247,7 @@ class App extends Component {
         A: document.querySelector('.date').value,
         B: document.querySelector('.name').value,
         C: document.querySelector('.phone').value,
-        D: document.querySelector('.userN').value,
+        D: document.querySelector('.userN').value.toUpperCase(),
         E: document.querySelector('.userid').value,
         F: '0',
         G: '0',
@@ -289,7 +259,7 @@ class App extends Component {
     }).then(()=>{
       firebaseDB.ref().once('value').then((snapshot)=>{
         const users = []
-        Object.entries(snapshot.val()).map(e => users.push(e[1]))
+        snapshot.val().forEach(e => users.push(e[1]))
         this.setState({
           users: users,
           length: users.length
