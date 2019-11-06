@@ -43,11 +43,10 @@ class Admin extends Component {
                         <div className="pro-pic">
                             <img alt="Loading img" src={imgURL}/>
                             <img alt="loader" className="loaderp" src={require('../img/4.gif')}/> 
-                            
-                        </div>
-                        <label> <i className="fa fa-camera"></i>
-                            <input placeholder="Upload" type="file" onChange={upload}/>
+                            <label> <i className="fa fa-camera"></i>
+                            <input placeholder="Upload" className="upload" type="file" onChange={upload}/>
                             </label>
+                        </div>
                     </div>
                     <div className="b-details">
                         <h2>Edit balance details</h2>
